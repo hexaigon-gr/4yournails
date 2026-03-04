@@ -1,14 +1,185 @@
 {
+  "Nav": {
+    "home": "Home",
+    "services": "Services",
+    "gallery": "Gallery",
+    "about": "About",
+    "contact": "Contact",
+    "bookNow": "Book Now"
+  },
   "HomePage": {
-    "title": "Welcome",
-    "description": "Get started by editing this page.",
-    "components": {
-      "title": "Available Components",
-      "button": "Button",
-      "input": "Input",
-      "card": "Card",
-      "label": "Label"
+    "hero": {
+      "title": "Your Nails, Our Passion",
+      "subtitle": "Award-winning nail salon in Ilioupoli. Expert manicures, pedicures, gel extensions & nail art — trusted by hundreds of happy clients.",
+      "bookNow": "Book Your Appointment",
+      "callUs": "Or call us"
+    },
+    "trust": {
+      "rating": "4.8★ on Treatwell",
+      "reviews": "298+ Reviews",
+      "award": "Award-Winning",
+      "experience": "Est. since 2018"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "From classic manicures to stunning nail art — we have everything you need.",
+      "viewAll": "View All Services",
+      "from": "From",
+      "manicure": {
+        "title": "Manicure",
+        "description": "Classic hand care with shaping, cuticle care & polish"
+      },
+      "pedicure": {
+        "title": "Pedicure",
+        "description": "Complete foot care for soft, beautiful feet"
+      },
+      "gelExtensions": {
+        "title": "Gel Extensions",
+        "description": "Natural-looking nail extensions with lasting shine"
+      },
+      "semiPermanent": {
+        "title": "Semi-Permanent",
+        "description": "Long-lasting gel polish that stays flawless for weeks"
+      },
+      "nailArt": {
+        "title": "Nail Art",
+        "description": "Custom designs, patterns & creative nail decoration"
+      },
+      "eyebrowsWaxing": {
+        "title": "Eyebrows & Waxing",
+        "description": "Threading, shaping & waxing for a polished look"
+      }
+    },
+    "reviews": {
+      "title": "What Our Clients Say",
+      "subtitle": "Trusted by hundreds of happy clients in Ilioupoli.",
+      "readMore": "Read More on Treatwell",
+      "review1": {
+        "name": "Maria",
+        "text": "Excellent environment, excellent nail work!! I've been coming here for years and the quality never drops."
+      },
+      "review2": {
+        "name": "Katerina",
+        "text": "For 6 consecutive years, every 15 days I trust 4 Your Nails services. Flawless manicure and pedicure."
+      },
+      "review3": {
+        "name": "Sofia",
+        "text": "Professional and friendly staff. Clean and comfortable spaces! My go-to nail salon in Ilioupoli."
+      }
+    },
+    "cta": {
+      "title": "Ready for your next appointment?",
+      "subtitle": "Book online in seconds — choose your service, pick a time, done.",
+      "bookNow": "Book on Treatwell"
+    },
+    "hours": {
+      "title": "Visit Us",
+      "subtitle": "We'd love to pamper you. Drop by or book your appointment.",
+      "address": "Leof. Sofokli Venizelou 93, Ilioupoli 163 46",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "closed": "Closed"
     }
+  },
+  "ServicesPage": {
+    "title": "Our Services",
+    "subtitle": "Professional nail care & beauty treatments at competitive prices.",
+    "book": "Book",
+    "duration": "min",
+    "nails": {
+      "title": "Nails",
+      "semiPermanentManicure": {
+        "title": "Semi-Permanent Manicure",
+        "description": "Long-lasting gel polish with shaping and cuticle care."
+      },
+      "handCareManicure": {
+        "title": "Hand Care Manicure",
+        "description": "Classic manicure with hand care, shaping and polish."
+      },
+      "semiPermanentPedicure": {
+        "title": "Semi-Permanent Pedicure",
+        "description": "Gel polish pedicure with full foot care treatment."
+      },
+      "pedicureMaintenance": {
+        "title": "Pedicure Maintenance",
+        "description": "Quick pedicure refresh to keep your feet looking great."
+      },
+      "gelExtensions": {
+        "title": "Gel Nail Extensions",
+        "description": "Beautiful, natural-looking nail extensions with gel."
+      },
+      "nailArt": {
+        "title": "Nail Art",
+        "description": "Custom designs, patterns, and creative decorations."
+      }
+    },
+    "beauty": {
+      "title": "Beauty",
+      "eyebrowShaping": {
+        "title": "Eyebrow Shaping",
+        "description": "Threading and shaping for perfectly defined brows."
+      },
+      "fullLegWaxing": {
+        "title": "Full Leg Waxing",
+        "description": "Smooth, long-lasting hair removal for full legs."
+      },
+      "eyelashExtensions": {
+        "title": "Eyelash Extensions",
+        "description": "Natural or dramatic lash extensions for beautiful eyes."
+      }
+    }
+  },
+  "GalleryPage": {
+    "title": "Our Work",
+    "subtitle": "See what we can do for your nails.",
+    "all": "All",
+    "manicure": "Manicure",
+    "pedicure": "Pedicure",
+    "nailArt": "Nail Art",
+    "gelExtensions": "Gel Extensions"
+  },
+  "AboutPage": {
+    "title": "About 4 Your Nails",
+    "story": {
+      "title": "Our Story",
+      "text": "Located in the heart of Ilioupoli, 4 Your Nails has been providing exceptional nail care and beauty services since 2018. We're proud to have been recognized with the Golden Company Award for our commitment to quality and customer satisfaction.",
+      "text2": "Our team of skilled professionals is passionate about making every client feel pampered and beautiful. From classic manicures to creative nail art, we bring precision, care, and creativity to every service."
+    },
+    "team": {
+      "title": "Our Team",
+      "subtitle": "Meet the talented professionals behind your perfect nails."
+    },
+    "award": {
+      "title": "Award-Winning Quality",
+      "text": "We're honored to have received the Golden Company Award, recognizing our dedication to excellence in nail care and beauty services."
+    }
+  },
+  "ContactPage": {
+    "title": "Visit Us",
+    "subtitle": "We'd love to see you. Book online or drop by our salon.",
+    "address": "Address",
+    "phone": "Phone",
+    "hours": "Hours",
+    "closed": "Closed",
+    "bookOnline": "Book Online",
+    "bookOnTreatwell": "Book on Treatwell",
+    "followUs": "Follow Us",
+    "findUs": "Find Us"
+  },
+  "Footer": {
+    "description": "Award-winning nail salon in Ilioupoli, Athens.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "hours": "Hours",
+    "closed": "Closed",
+    "rights": "All rights reserved.",
+    "bookNow": "Book Now",
+    "madeBy": "Made by"
   },
   "Admin": {
     "nav": {

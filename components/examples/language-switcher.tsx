@@ -29,8 +29,6 @@ export const LanguageSwitcher = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const currentLanguage = languages.find((lang) => lang.code === locale);
-
   const handleLanguageChange = (languageCode: string) => {
     router.replace(pathname, { locale: languageCode });
   };
@@ -38,10 +36,9 @@ export const LanguageSwitcher = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-2">
-          <span className="text-lg">{currentLanguage?.flag}</span>
-          <span className="hidden sm:inline">{currentLanguage?.name}</span>
-          <Globe className="h-4 w-4 sm:hidden" />
+        <Button variant="ghost" size="icon" className="size-9">
+          <Globe className="size-4" />
+          <span className="sr-only">Switch language</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
