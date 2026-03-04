@@ -136,7 +136,7 @@ const OgImage = async () => {
             color: "#A89690",
           }}
         >
-          <span>4yournails.gr</span>
+          <span>4yournails.vercel.app</span>
           <span style={{ margin: "0 8px" }}>•</span>
           <span>210 991 8915</span>
         </div>

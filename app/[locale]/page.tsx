@@ -49,8 +49,8 @@ const Home = async ({ params }: BasePageProps) => {
     "@context": "https://schema.org",
     "@type": "NailSalon",
     name: "4 Your Nails",
-    image: "https://4yournails.gr/images/logo.png",
-    url: "https://4yournails.gr",
+    image: "https://4yournails.vercel.app/images/logo.png",
+    url: "https://4yournails.vercel.app",
     telephone: "+302109918915",
     address: {
       "@type": "PostalAddress",
