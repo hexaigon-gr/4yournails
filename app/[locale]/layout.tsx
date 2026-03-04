@@ -2,22 +2,16 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { setRequestLocale, getMessages } from "next-intl/server";
-import { Inter, EB_Garamond } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { routing } from "@/lib/i18n/routing";
 import { Providers } from "@/components/providers";
 import { BaseLayoutProps } from "@/types/page-props";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin", "greek"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const ebGaramond = EB_Garamond({
-  variable: "--font-playfair",
-  subsets: ["latin", "greek"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -50,7 +44,7 @@ const LocaleLayout = async ({ children, params }: BaseLayoutProps) => {
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${ebGaramond.variable} font-sans antialiased`}
+        className={`${manrope.variable} font-sans antialiased`}
       >
         <Providers messages={messages} locale={locale}>
           {children}
