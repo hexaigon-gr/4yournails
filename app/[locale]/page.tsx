@@ -45,12 +45,14 @@ const Home = async ({ params }: BasePageProps) => {
 
   const t = await getTranslations("HomePage");
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://4yournails.vercel.app";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NailSalon",
     name: "4 Your Nails",
-    image: "https://4yournails.vercel.app/images/logo.png",
-    url: "https://4yournails.vercel.app",
+    image: `${siteUrl}/images/logo.png`,
+    url: siteUrl,
     telephone: "+302109918915",
     address: {
       "@type": "PostalAddress",

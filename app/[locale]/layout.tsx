@@ -14,8 +14,11 @@ const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://4yournails.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://4yournails.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "4 Your Nails | Nail Salon in Ilioupoli, Athens",
     template: "%s | 4 Your Nails",
@@ -44,7 +47,7 @@ export const metadata: Metadata = {
     title: "4 Your Nails | Award-Winning Nail Salon in Ilioupoli",
     description:
       "Expert manicures, pedicures, gel extensions & nail art. Trusted by hundreds of happy clients. Book on Treatwell.",
-    url: "https://4yournails.vercel.app",
+    url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
@@ -57,10 +60,10 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://4yournails.vercel.app",
+    canonical: SITE_URL,
     languages: {
-      "el": "https://4yournails.vercel.app/el",
-      "en": "https://4yournails.vercel.app/en",
+      "el": `${SITE_URL}/el`,
+      "en": `${SITE_URL}/en`,
     },
   },
 };
