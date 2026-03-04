@@ -15,17 +15,53 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://4yournails.gr"),
   title: {
     default: "4 Your Nails | Nail Salon in Ilioupoli, Athens",
     template: "%s | 4 Your Nails",
   },
   description:
     "Award-winning nail salon in Ilioupoli, Athens. Expert manicures, pedicures, gel extensions & nail art. Book your appointment on Treatwell.",
+  keywords: [
+    "nail salon",
+    "manicure",
+    "pedicure",
+    "gel extensions",
+    "nail art",
+    "Ilioupoli",
+    "Athens",
+    "4 Your Nails",
+    "μανικιούρ",
+    "πεντικιούρ",
+    "Ηλιούπολη",
+  ],
+  authors: [{ name: "4 Your Nails" }],
   openGraph: {
     type: "website",
     siteName: "4 Your Nails",
     locale: "el_GR",
     alternateLocale: "en_US",
+    title: "4 Your Nails | Award-Winning Nail Salon in Ilioupoli",
+    description:
+      "Expert manicures, pedicures, gel extensions & nail art. Trusted by hundreds of happy clients. Book on Treatwell.",
+    url: "https://4yournails.gr",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "4 Your Nails | Nail Salon in Ilioupoli, Athens",
+    description:
+      "Award-winning nail salon. Expert manicures, pedicures, gel extensions & nail art. Book your appointment today.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://4yournails.gr",
+    languages: {
+      "el": "https://4yournails.gr/el",
+      "en": "https://4yournails.gr/en",
+    },
   },
 };
 
