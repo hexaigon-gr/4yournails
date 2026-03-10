@@ -10,7 +10,7 @@ Replace the placeholders below, then paste everything after the line into Claude
 
 - `4 your nails` — The business name
 - `https://share.google/yusYmtfoFCgxnbiTB` — Google Maps link to the business (for photos & reviews)
-- `<LOGO_PATH>` — Path to the logo file (e.g., `public/images/logo.png`)
+- `<LOGO_PATH>` — Path to the logo file (e.g., `public/images/logo-transparent.png`)
 - `<SITE_DESCRIPTION>` — One-sentence description of the business (e.g., "Nail salon in Athens, Greece")
 - `<PAGES>` _(optional)_ — Comma-separated list of pages you want (e.g., "Home, Services, Gallery, Contact"). If omitted, I'll suggest pages based on the business type.
 

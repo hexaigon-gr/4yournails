@@ -13,6 +13,7 @@
 ### Task 1: Update Color Palette in globals.css
 
 **Files:**
+
 - Modify: `app/[locale]/globals.css`
 
 **Step 1:** Replace the CSS variables with the Warm Boutique palette derived from the logo colors (orange #E8820C, green #7B9B3B, black #2D2D2D, tan #D4A96A). Convert hex to oklch. Update both light and dark themes.
@@ -26,6 +27,7 @@
 ### Task 2: Update Layout — Font, Metadata, Structure
 
 **Files:**
+
 - Modify: `app/[locale]/layout.tsx`
 
 **Step 1:** Change font from Roboto to Playfair Display (headings) + Inter (body). Update metadata title to "4 Your Nails | Nail Salon in Ilioupoli" and description. Add OG tags.
@@ -39,6 +41,7 @@
 ### Task 3: Write Translation Files
 
 **Files:**
+
 - Modify: `messages/en.json`
 - Modify: `messages/el.json`
 
@@ -51,9 +54,10 @@
 ### Task 4: Create Site Header Component
 
 **Files:**
+
 - Create: `components/site-header.tsx`
 
-**Step 1:** Build sticky header with: logo (from public/images/logo.png), nav links (Home, Services, Gallery, About, Contact), "Book Now" button linking to Treatwell, language switcher, phone number. Server component with client-side mobile menu if needed.
+**Step 1:** Build sticky header with: logo (from public/images/logo-transparent.png), nav links (Home, Services, Gallery, About, Contact), "Book Now" button linking to Treatwell, language switcher, phone number. Server component with client-side mobile menu if needed.
 
 **Step 2:** Screenshot and verify. Commit: `feat: add site header with nav and booking CTA`
 
@@ -62,6 +66,7 @@
 ### Task 5: Create Site Footer Component
 
 **Files:**
+
 - Create: `components/site-footer.tsx`
 
 **Step 1:** Dark background footer with: logo, address, phone, hours table, Instagram link, Treatwell booking link, copyright. Two-column layout.
@@ -73,6 +78,7 @@
 ### Task 6: Build Homepage — Hero Section
 
 **Files:**
+
 - Modify: `app/[locale]/page.tsx`
 
 **Step 1:** Replace starter page entirely. Build hero: warm cream background, H1 headline, subtitle, "Book Now" Treatwell button, phone number. Right side: placeholder for salon photo (use a nice gradient/shape until photos are downloaded).
@@ -116,6 +122,7 @@
 ### Task 11: Build Services Page
 
 **Files:**
+
 - Create: `app/[locale]/services/page.tsx`
 
 **Step 1:** Full services page with categories: Nails (manicure, pedicure, gel, semi-permanent) and Beauty (eyebrows, waxing, lashes). Each service: name, description, duration, price, "Book" button → Treatwell.
@@ -127,6 +134,7 @@
 ### Task 12: Build Gallery Page
 
 **Files:**
+
 - Create: `app/[locale]/gallery/page.tsx`
 
 **Step 1:** Masonry-style photo grid. For now use placeholder colored divs until real photos are added. Category filter buttons (All, Manicure, Pedicure, Nail Art).
@@ -138,6 +146,7 @@
 ### Task 13: Build About Page
 
 **Files:**
+
 - Create: `app/[locale]/about/page.tsx`
 
 **Step 1:** Story section about the salon, team section with staff names (Ελένη, Ελεονώρα, Ντεναντα, Άντζυ), Golden Company award mention.
@@ -149,6 +158,7 @@
 ### Task 14: Build Contact Page
 
 **Files:**
+
 - Create: `app/[locale]/contact/page.tsx`
 
 **Step 1:** Address, phone (click-to-call), hours table, embedded Google Maps iframe, prominent "Book Online" Treatwell button, Instagram link.

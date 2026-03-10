@@ -29,8 +29,8 @@ export const SiteHeader = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const isHome = pathname === "/";
-  // Transparent only on homepage when not scrolled
-  const isTransparent = isHome && !scrolled;
+  // Transparent only on homepage when not scrolled and mobile menu is closed
+  const isTransparent = isHome && !scrolled && !mobileOpen;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -50,7 +50,7 @@ export const SiteHeader = () => {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/images/logo.png"
+            src="/images/logo-transparent.png"
             alt="4 Your Nails"
             width={48}
             height={48}

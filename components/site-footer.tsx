@@ -40,7 +40,7 @@ export const SiteFooter = async () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Image
-                src="/images/logo.png"
+                src="/images/logo-transparent.png"
                 alt="4 Your Nails"
                 width={40}
                 height={40}

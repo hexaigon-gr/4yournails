@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "@/lib/i18n/navigation";
 import GoogleReviews from "@/components/GoogleReviews";
+import { GalleryGrid } from "@/components/gallery-grid";
 import {
   Star,
   Award,
@@ -22,6 +23,7 @@ import {
   ArrowRight,
   Clock,
   MapPin,
+  Quote,
 } from "lucide-react";
 
 const GOOGLE_PLACE_ID = process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID ?? "";
@@ -51,7 +53,7 @@ const Home = async ({ params }: BasePageProps) => {
     "@context": "https://schema.org",
     "@type": "NailSalon",
     name: "4 Your Nails",
-    image: `${siteUrl}/images/logo.png`,
+    image: `${siteUrl}/images/logo-transparent.png`,
     url: siteUrl,
     telephone: "+302109918915",
     address: {
@@ -204,8 +206,44 @@ const Home = async ({ params }: BasePageProps) => {
           </div>
         </section>
 
-        {/* Reviews */}
+        {/* Gallery Preview */}
         <section className="bg-white py-16 lg:py-20">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                {t("gallery.title")}
+              </h2>
+              <p className="mt-3 text-muted-foreground">
+                {t("gallery.subtitle")}
+              </p>
+            </div>
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              <GalleryGrid
+                images={[
+                  { src: "/images/gallery/gallery-1.jpg", alt: "Chrome iridescent manicure" },
+                  { src: "/images/gallery/gallery-6.jpg", alt: "French tip nail extensions" },
+                  { src: "/images/gallery/gallery-4.jpg", alt: "Purple gel manicure" },
+                  { src: "/images/gallery/gallery-7.jpg", alt: "Colorful rainbow nail art" },
+                  { src: "/images/gallery/gallery-8.jpg", alt: "French almond gel extensions" },
+                  { src: "/images/gallery/gallery-5.jpg", alt: "Classic red manicure" },
+                  { src: "/images/gallery/gallery-9.jpg", alt: "Subtle iridescent french tips" },
+                  { src: "/images/gallery/gallery-2.jpg", alt: "4 Your Nails salon storefront" },
+                ]}
+              />
+            </div>
+            <div className="mt-8 text-center">
+              <Button asChild className="rounded-full border-0 bg-[#DBA49A] px-8 text-white hover:bg-[#c99389]">
+                <Link href="/gallery">
+                  {t("gallery.seeMore")}
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Reviews */}
+        <section className="bg-[#FAF7F4] py-16 lg:py-20">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -215,7 +253,45 @@ const Home = async ({ params }: BasePageProps) => {
                 {t("reviews.subtitle")}
               </p>
             </div>
-            <div className="mt-10 flex justify-center">
+            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {(["review1", "review2", "review3", "review4", "review5", "review6"] as const).map((key) => {
+                const source = t(`reviews.${key}.source`);
+                const isGoogle = source === "google";
+                return (
+                  <Card key={key} className="border-0 bg-[#FAF7F4] shadow-sm transition-all hover:shadow-md">
+                    <CardContent className="flex flex-col justify-between p-6">
+                      <div>
+                        <Quote className="mb-3 size-5 text-[#DBA49A]/40" />
+                        <p className="text-sm leading-relaxed text-foreground/80">
+                          &ldquo;{t(`reviews.${key}.text`)}&rdquo;
+                        </p>
+                      </div>
+                      <div className="mt-4 flex items-center justify-between border-t border-border/10 pt-4">
+                        <div>
+                          <p className="text-sm font-semibold text-foreground">
+                            {t(`reviews.${key}.name`)}
+                          </p>
+                          <div className="flex items-center gap-1.5 mt-0.5">
+                            <div className="flex">
+                              {[...Array(5)].map((_, i) => (
+                                <Star key={i} className="size-3 fill-yellow-400 text-yellow-400" />
+                              ))}
+                            </div>
+                            <span className="text-xs text-muted-foreground">
+                              {isGoogle ? t("reviews.onGoogle") : t("reviews.onTreatwell")}
+                            </span>
+                          </div>
+                        </div>
+                        <span className="text-xs text-muted-foreground">
+                          {t(`reviews.${key}.time`)}
+                        </span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+            <div className="mt-8 flex justify-center">
               <GoogleReviews placeId={GOOGLE_PLACE_ID} />
             </div>
           </div>

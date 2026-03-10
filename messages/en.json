@@ -50,21 +50,52 @@
         "description": "Threading, shaping & waxing for a polished look"
       }
     },
+    "gallery": {
+      "title": "Our Work",
+      "subtitle": "Real results from our salon — see what we can do for you.",
+      "seeMore": "See More in Gallery"
+    },
     "reviews": {
       "title": "What Our Clients Say",
       "subtitle": "Trusted by hundreds of happy clients in Ilioupoli.",
-      "readMore": "Read More on Treatwell",
+      "readMore": "Read More on Google",
+      "onGoogle": "on Google",
+      "onTreatwell": "on Treatwell",
       "review1": {
-        "name": "Maria",
-        "text": "Excellent environment, excellent nail work!! I've been coming here for years and the quality never drops."
+        "name": "Maria Pischos",
+        "text": "Very clean, very professional and great prices. Nice selection of colors and on time!",
+        "source": "google",
+        "time": "4 years ago"
       },
       "review2": {
-        "name": "Katerina",
-        "text": "For 6 consecutive years, every 15 days I trust 4 Your Nails services. Flawless manicure and pedicure."
+        "name": "Konstantina",
+        "text": "I visited for eyebrow shaping. I don't usually trust people easily with this, but the work was amazing and I was very satisfied with the result. I recommend it without reservation!",
+        "source": "google",
+        "time": "10 months ago"
       },
       "review3": {
-        "name": "Sofia",
-        "text": "Professional and friendly staff. Clean and comfortable spaces! My go-to nail salon in Ilioupoli."
+        "name": "Koula A",
+        "text": "The best I've ever visited. Excellent work without shortcuts, no drill which for me is very important, no rush. I've already booked my next appointment.",
+        "source": "google",
+        "time": "6 months ago"
+      },
+      "review4": {
+        "name": "Melpo Makromalli",
+        "text": "A little diamond in the heart of Ilioupoli! Every time I visit this place I feel like I'm truly being taken care of.",
+        "source": "google",
+        "time": "7 months ago"
+      },
+      "review5": {
+        "name": "Treatwell Client",
+        "text": "Thank you so much! The manicure, which in my case is difficult, was perfect.",
+        "source": "treatwell",
+        "time": "2 weeks ago"
+      },
+      "review6": {
+        "name": "Evangelia G.",
+        "text": "Beautiful space, clean and the staff always very polite! Flawless manicure-pedicure and the best eyebrow shaping service in Ilioupoli! I recommend without reservation!",
+        "source": "google",
+        "time": "1 year ago"
       }
     },
     "cta": {
@@ -141,7 +172,8 @@
     "manicure": "Manicure",
     "pedicure": "Pedicure",
     "nailArt": "Nail Art",
-    "gelExtensions": "Gel Extensions"
+    "gelExtensions": "Gel Extensions",
+    "followUs": "Follow us on Instagram for our latest work"
   },
   "AboutPage": {
     "title": "About 4 Your Nails",
