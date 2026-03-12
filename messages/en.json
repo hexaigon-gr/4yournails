@@ -115,6 +115,26 @@
       "saturday": "Saturday",
       "sunday": "Sunday",
       "closed": "Closed"
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "subtitle": "Have a question or want to book? Send us a message.",
+      "address": "Address",
+      "phone": "Phone",
+      "hours": "Hours",
+      "closed": "Closed",
+      "followUs": "Follow Us",
+      "formName": "Full Name",
+      "formNamePlaceholder": "Your name",
+      "formEmail": "Email",
+      "formEmailPlaceholder": "email@example.com",
+      "formPhone": "Phone",
+      "formPhonePlaceholder": "69XXXXXXXX",
+      "formSubject": "Subject",
+      "formSubjectPlaceholder": "General Inquiry",
+      "formMessage": "Message",
+      "formMessagePlaceholder": "Tell us what you need...",
+      "formSend": "Send"
     }
   },
   "ServicesPage": {

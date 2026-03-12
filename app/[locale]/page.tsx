@@ -8,6 +8,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "@/lib/i18n/navigation";
 import GoogleReviews from "@/components/GoogleReviews";
 import { GalleryGrid } from "@/components/gallery-grid";
+import { ReviewsCarousel } from "@/components/reviews-carousel";
+import { AnimatedMap } from "@/components/animated-map";
+import { ContactForm } from "@/components/contact-form";
 import {
   Star,
   Award,
@@ -23,7 +26,8 @@ import {
   ArrowRight,
   Clock,
   MapPin,
-  Quote,
+  Instagram,
+  ExternalLink,
 } from "lucide-react";
 
 const GOOGLE_PLACE_ID = process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID ?? "";
@@ -253,43 +257,8 @@ const Home = async ({ params }: BasePageProps) => {
                 {t("reviews.subtitle")}
               </p>
             </div>
-            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {(["review1", "review2", "review3", "review4", "review5", "review6"] as const).map((key) => {
-                const source = t(`reviews.${key}.source`);
-                const isGoogle = source === "google";
-                return (
-                  <Card key={key} className="border-0 bg-[#FAF7F4] shadow-sm transition-all hover:shadow-md">
-                    <CardContent className="flex flex-col justify-between p-6">
-                      <div>
-                        <Quote className="mb-3 size-5 text-[#DBA49A]/40" />
-                        <p className="text-sm leading-relaxed text-foreground/80">
-                          &ldquo;{t(`reviews.${key}.text`)}&rdquo;
-                        </p>
-                      </div>
-                      <div className="mt-4 flex items-center justify-between border-t border-border/10 pt-4">
-                        <div>
-                          <p className="text-sm font-semibold text-foreground">
-                            {t(`reviews.${key}.name`)}
-                          </p>
-                          <div className="flex items-center gap-1.5 mt-0.5">
-                            <div className="flex">
-                              {[...Array(5)].map((_, i) => (
-                                <Star key={i} className="size-3 fill-yellow-400 text-yellow-400" />
-                              ))}
-                            </div>
-                            <span className="text-xs text-muted-foreground">
-                              {isGoogle ? t("reviews.onGoogle") : t("reviews.onTreatwell")}
-                            </span>
-                          </div>
-                        </div>
-                        <span className="text-xs text-muted-foreground">
-                          {t(`reviews.${key}.time`)}
-                        </span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
+            <div className="mt-10">
+              <ReviewsCarousel />
             </div>
             <div className="mt-8 flex justify-center">
               <GoogleReviews placeId={GOOGLE_PLACE_ID} />
@@ -297,108 +266,138 @@ const Home = async ({ params }: BasePageProps) => {
           </div>
         </section>
 
-        {/* Visit Us / Hours */}
-        <section className="bg-[#FAF7F4] py-16 lg:py-20">
+        {/* Contact Section */}
+        <section id="contact" className="scroll-mt-20 bg-[#FAF7F4] py-16 lg:py-20">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                {t("hours.title")}
+                {t("contact.title")}
               </h2>
               <p className="mt-3 text-muted-foreground">
-                {t("hours.subtitle")}
+                {t("contact.subtitle")}
               </p>
             </div>
-            <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2">
-              {/* Hours Card */}
-              <Card className="border-0 bg-white shadow-sm">
-                <CardContent className="p-8">
-                  <div className="mb-6 flex items-center gap-3">
-                    <div className="flex size-10 items-center justify-center rounded-full bg-[#DBA49A]/15 text-[#DBA49A]">
-                      <Clock className="size-5" />
+            <div className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2">
+              {/* Left — Info Cards + Map */}
+              <div className="flex flex-col gap-4">
+                {/* Address */}
+                <div className="rounded-xl border border-border/50 bg-white p-5">
+                  <div className="flex items-start gap-4">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#DBA49A]/10">
+                      <MapPin className="size-5 text-[#DBA49A]" />
                     </div>
-                    <h3 className="font-serif text-lg font-semibold text-foreground">{t("hours.title")}</h3>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { day: "monday", hours: null },
-                      { day: "tuesday", hours: "09:00 – 20:00" },
-                      { day: "wednesday", hours: "09:00 – 20:00" },
-                      { day: "thursday", hours: "09:00 – 20:00" },
-                      { day: "friday", hours: "09:00 – 20:00" },
-                      { day: "saturday", hours: "09:00 – 17:00" },
-                      { day: "sunday", hours: null },
-                    ].map((item) => (
-                      <div key={item.day} className="flex items-center justify-between text-sm">
-                        <span className="font-medium text-foreground">{t(`hours.${item.day}`)}</span>
-                        <span className={item.hours ? "text-muted-foreground" : "text-[#DBA49A]"}>
-                          {item.hours ?? t("hours.closed")}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-              {/* Location Card */}
-              <Card className="border-0 bg-white shadow-sm">
-                <CardContent className="flex flex-col justify-between p-8">
-                  <div>
-                    <div className="mb-6 flex items-center gap-3">
-                      <div className="flex size-10 items-center justify-center rounded-full bg-[#DBA49A]/15 text-[#DBA49A]">
-                        <MapPin className="size-5" />
-                      </div>
-                      <h3 className="font-serif text-lg font-semibold text-foreground">{t("hours.address")}</h3>
-                    </div>
-                    <div className="overflow-hidden rounded-xl">
-                      <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.5!2d23.7547252!3d37.9315647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDU1JzUzLjYiTiAyM8KwNDUnMTcuMCJF!5e0!3m2!1sen!2sgr!4v1"
-                        width="100%"
-                        height="220"
-                        style={{ border: 0 }}
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="4 Your Nails location"
-                        className="rounded-xl"
-                      />
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-[#DBA49A]">
+                        {t("contact.address")}
+                      </p>
+                      <p className="mt-1 text-sm font-medium text-foreground">
+                        Λεωφ. Σοφοκλή Βενιζέλου 93, Ηλιούπολη 163 46
+                      </p>
                     </div>
                   </div>
-                  <a
-                    href={`tel:${PHONE_NUMBER}`}
-                    className="mt-6 flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
-                  >
-                    <Phone className="size-4" />
-                    {PHONE_DISPLAY}
-                  </a>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
+                </div>
 
-        {/* CTA Banner */}
-        <section className="bg-white py-12 lg:py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="font-serif text-2xl font-bold text-foreground sm:text-3xl">
-              {t("cta.title")}
-            </h2>
-            <p className="mx-auto mt-3 max-w-lg text-muted-foreground">
-              {t("cta.subtitle")}
-            </p>
-            <div className="mt-6">
-              <Button
-                asChild
-                size="lg"
-                className="rounded-full border-0 bg-[#DBA49A] px-8 font-semibold text-white hover:bg-[#c99389]"
-              >
-                <a
-                  href={TREATWELL_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                {/* Phone */}
+                <div className="rounded-xl border border-border/50 bg-white p-5">
+                  <div className="flex items-start gap-4">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#DBA49A]/10">
+                      <Phone className="size-5 text-[#DBA49A]" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-[#DBA49A]">
+                        {t("contact.phone")}
+                      </p>
+                      <a
+                        href={`tel:${PHONE_NUMBER}`}
+                        className="mt-1 inline-block text-sm font-medium text-foreground transition-colors hover:text-[#DBA49A]"
+                      >
+                        {PHONE_DISPLAY}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hours */}
+                <div className="rounded-xl border border-border/50 bg-white p-5">
+                  <div className="flex items-start gap-4">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#DBA49A]/10">
+                      <Clock className="size-5 text-[#DBA49A]" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-[#DBA49A]">
+                        {t("contact.hours")}
+                      </p>
+                      <div className="mt-2 space-y-1.5">
+                        {[
+                          { day: "monday", hours: null },
+                          { day: "tuesday", hours: "09:00 – 20:00" },
+                          { day: "wednesday", hours: "09:00 – 20:00" },
+                          { day: "thursday", hours: "09:00 – 20:00" },
+                          { day: "friday", hours: "09:00 – 20:00" },
+                          { day: "saturday", hours: "09:00 – 17:00" },
+                          { day: "sunday", hours: null },
+                        ].map((item) => (
+                          <div key={item.day} className="flex justify-between text-sm">
+                            <span className="font-medium text-foreground">{t(`hours.${item.day}`)}</span>
+                            <span className={item.hours ? "text-muted-foreground" : "text-[#DBA49A]"}>
+                              {item.hours ?? t("contact.closed")}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Animated Map */}
+                <div className="overflow-hidden rounded-xl border border-border/50">
+                  <AnimatedMap />
+                </div>
+              </div>
+
+              {/* Right — Contact Form + Social */}
+              <div className="flex flex-col gap-4">
+                <ContactForm />
+
+                {/* Instagram */}
+                <div className="rounded-xl border border-border/50 bg-white p-5">
+                  <div className="flex items-center gap-4">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#DBA49A]/10">
+                      <Instagram className="size-5 text-[#DBA49A]" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-[#DBA49A]">
+                        {t("contact.followUs")}
+                      </p>
+                      <a
+                        href="https://www.instagram.com/4yournails_/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 inline-flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-[#DBA49A]"
+                      >
+                        @4yournails_
+                        <ExternalLink className="size-3" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Book on Treatwell CTA */}
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full rounded-xl border-0 bg-[#DBA49A] text-base font-semibold text-white hover:bg-[#c99389]"
                 >
-                  <Calendar className="size-4" />
-                  {t("cta.bookNow")}
-                </a>
-              </Button>
+                  <a
+                    href={TREATWELL_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Calendar className="size-4" />
+                    {t("cta.bookNow")}
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </section>

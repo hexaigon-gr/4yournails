@@ -115,6 +115,26 @@
       "saturday": "Σάββατο",
       "sunday": "Κυριακή",
       "closed": "Κλειστά"
+    },
+    "contact": {
+      "title": "Επικοινωνήστε Μαζί Μας",
+      "subtitle": "Έχετε ερώτηση ή θέλετε να κλείσετε ραντεβού; Στείλτε μας μήνυμα.",
+      "address": "Διεύθυνση",
+      "phone": "Τηλέφωνο",
+      "hours": "Ωράριο",
+      "closed": "Κλειστά",
+      "followUs": "Ακολουθήστε μας",
+      "formName": "Ονοματεπώνυμο",
+      "formNamePlaceholder": "Το όνομά σας",
+      "formEmail": "Email",
+      "formEmailPlaceholder": "email@example.com",
+      "formPhone": "Τηλέφωνο",
+      "formPhonePlaceholder": "69XXXXXXXX",
+      "formSubject": "Θέμα",
+      "formSubjectPlaceholder": "Γενική Ερώτηση",
+      "formMessage": "Μήνυμα",
+      "formMessagePlaceholder": "Πείτε μας τι χρειάζεστε...",
+      "formSend": "Αποστολή"
     }
   },
   "ServicesPage": {

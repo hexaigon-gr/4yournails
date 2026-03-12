@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/lib/i18n/navigation";
-import { Instagram, Facebook, Phone, MapPin } from "lucide-react";
+import { Instagram, Facebook, Phone, MapPin, Hexagon } from "lucide-react";
 import { SocialIcon } from "@/components/social-icon";
 
 const TREATWELL_URL = "https://www.treatwell.gr/katasthma/4-your-nails/";
@@ -15,7 +15,7 @@ const navItems = [
   { key: "services", href: "/services" },
   { key: "gallery", href: "/gallery" },
   { key: "about", href: "/about" },
-  { key: "contact", href: "/contact" },
+  { key: "contact", href: "/#contact" },
 ] as const;
 
 const hours = [
@@ -142,14 +142,15 @@ export const SiteFooter = async () => {
           <p>
             &copy; {new Date().getFullYear()} 4 Your Nails. {t("rights")}
           </p>
-          <p className="mt-2">
+          <p className="mt-2 flex items-center justify-center gap-1.5">
             {t("madeBy")}{" "}
             <a
               href="https://www.hexaigon.gr"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-background/70 underline underline-offset-4 transition-colors hover:text-background"
+              className="inline-flex items-center gap-1 text-background/70 underline underline-offset-4 transition-colors hover:text-background"
             >
+              <Hexagon className="size-3.5 text-primary" />
               hexaigon.gr
             </a>
           </p>

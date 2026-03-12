@@ -19,7 +19,7 @@ const navItems = [
   { key: "services", href: "/services" },
   { key: "gallery", href: "/gallery" },
   { key: "about", href: "/about" },
-  { key: "contact", href: "/contact" },
+  { key: "contact", href: "/#contact" },
 ] as const;
 
 export const SiteHeader = () => {
