@@ -128,12 +128,11 @@ const Home = async ({ params }: BasePageProps) => {
             ]}
             alt="Beautiful manicured nails by 4 Your Nails"
           />
-          <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-3xl px-4 text-center">
-            <h1 className="font-serif text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-7xl">
+            <h1 className="font-serif text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-7xl">
               {t("hero.title")}
             </h1>
-            <p className="mx-auto mt-6 max-w-lg text-lg text-white/80">
+            <p className="mx-auto mt-6 max-w-lg text-lg text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
               {t("hero.subtitle")}
             </p>
             <div className="mt-8 flex items-center justify-center">
