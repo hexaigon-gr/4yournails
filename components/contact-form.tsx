@@ -25,7 +25,7 @@ export function ContactForm() {
               name="name"
               required
               placeholder={t("formNamePlaceholder")}
-              className="w-full rounded-lg border border-border/60 bg-background py-2.5 pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-[#DBA49A] focus:outline-none focus:ring-1 focus:ring-[#DBA49A]/30"
+              className="w-full rounded-lg border border-border/60 bg-background py-2.5 pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30"
             />
           </div>
         </div>
@@ -42,7 +42,7 @@ export function ContactForm() {
               name="email"
               required
               placeholder={t("formEmailPlaceholder")}
-              className="w-full rounded-lg border border-border/60 bg-background py-2.5 pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-[#DBA49A] focus:outline-none focus:ring-1 focus:ring-[#DBA49A]/30"
+              className="w-full rounded-lg border border-border/60 bg-background py-2.5 pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30"
             />
           </div>
         </div>
@@ -58,7 +58,7 @@ export function ContactForm() {
               type="tel"
               name="phone"
               placeholder={t("formPhonePlaceholder")}
-              className="w-full rounded-lg border border-border/60 bg-background py-2.5 pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-[#DBA49A] focus:outline-none focus:ring-1 focus:ring-[#DBA49A]/30"
+              className="w-full rounded-lg border border-border/60 bg-background py-2.5 pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30"
             />
           </div>
         </div>
@@ -74,7 +74,7 @@ export function ContactForm() {
               type="text"
               name="subject"
               placeholder={t("formSubjectPlaceholder")}
-              className="w-full rounded-lg border border-border/60 bg-background py-2.5 pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-[#DBA49A] focus:outline-none focus:ring-1 focus:ring-[#DBA49A]/30"
+              className="w-full rounded-lg border border-border/60 bg-background py-2.5 pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30"
             />
           </div>
         </div>
@@ -92,7 +92,7 @@ export function ContactForm() {
             required
             rows={4}
             placeholder={t("formMessagePlaceholder")}
-            className="w-full rounded-lg border border-border/60 bg-background py-2.5 pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-[#DBA49A] focus:outline-none focus:ring-1 focus:ring-[#DBA49A]/30 resize-none"
+            className="w-full rounded-lg border border-border/60 bg-background py-2.5 pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30 resize-none"
           />
         </div>
       </div>
@@ -100,7 +100,7 @@ export function ContactForm() {
       {/* Submit */}
       <button
         type="submit"
-        className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#DBA49A] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c99389]"
+        className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
       >
         <Send className="size-4" />
         {t("formSend")}

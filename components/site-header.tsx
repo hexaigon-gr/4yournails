@@ -5,12 +5,12 @@ import { useTranslations } from "next-intl";
 import { usePathname } from "@/lib/i18n/navigation";
 import { Link } from "@/lib/i18n/navigation";
 import { Button } from "@/components/ui/button";
-import { LanguageSwitcher } from "@/components/examples/language-switcher";
+import { BookingDialog } from "@/components/booking-dialog";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { Phone, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/general/utils";
 
-const TREATWELL_URL = "https://www.treatwell.gr/katasthma/4-your-nails/";
 const PHONE_NUMBER = "+302109918915";
 const PHONE_DISPLAY = "210 991 8915";
 
@@ -29,8 +29,7 @@ export const SiteHeader = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const isHome = pathname === "/";
-  // Transparent only on homepage when not scrolled and mobile menu is closed
-  const isTransparent = isHome && !scrolled && !mobileOpen;
+  const isHero = isHome && !scrolled && !mobileOpen;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -40,73 +39,93 @@ export const SiteHeader = () => {
   }, []);
 
   return (
-    <header className={cn(
-      "sticky top-0 z-50 w-full transition-all duration-300",
-      isTransparent
-        ? "bg-transparent"
-        : "border-b border-border/50 bg-card/95 backdrop-blur supports-backdrop-filter:bg-card/80"
-    )}>
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:pt-4">
+      <div
+        className={cn(
+          "flex w-full max-w-5xl items-center justify-between gap-3 rounded-full border px-3 py-2 transition-all duration-300 sm:px-4",
+          isHero
+            ? "border-white/15 bg-white/5 backdrop-blur-md supports-backdrop-filter:bg-white/6"
+            : "border-border/40 bg-background/55 backdrop-blur-xl shadow-[0_8px_28px_-12px_oklch(0.22_0.005_60/0.18)] supports-backdrop-filter:bg-background/40"
+        )}
+      >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex shrink-0 items-center gap-2 pl-1">
           <Image
             src="/images/logo-transparent.png"
             alt="4 Your Nails"
             width={48}
             height={48}
-            className="h-10 w-auto"
+            className="h-9 w-auto"
           />
-          <span className={cn("hidden font-serif text-lg font-semibold sm:inline", isTransparent ? "text-white" : "text-foreground")}>
+          <span
+            className={cn(
+              "hidden font-serif text-base font-semibold tracking-tight sm:inline",
+              isHero ? "text-white" : "text-foreground"
+            )}
+          >
             4 Your Nails
           </span>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.key}
-              href={item.href}
-              className={cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                isTransparent && pathname === item.href && "text-white",
-                isTransparent && pathname !== item.href && "text-white/80 hover:text-white",
-                !isTransparent && pathname === item.href && "text-primary",
-                !isTransparent && pathname !== item.href && "text-muted-foreground hover:bg-muted hover:text-foreground"
-              )}
-            >
-              {t(item.key)}
-            </Link>
-          ))}
+        {/* Desktop Nav — centered */}
+        <nav className="hidden flex-1 items-center justify-center gap-1 md:flex">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.key}
+                href={item.href}
+                className={cn(
+                  "relative rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
+                  isHero && isActive && "bg-white/15 text-white",
+                  isHero && !isActive && "text-white/75 hover:bg-white/10 hover:text-white",
+                  !isHero && isActive && "bg-primary/12 text-primary",
+                  !isHero && !isActive && "text-muted-foreground hover:bg-foreground/4 hover:text-foreground"
+                )}
+              >
+                {t(item.key)}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right Side */}
-        <div className={cn("flex items-center gap-2", isTransparent && "text-white")}>
+        <div className="flex shrink-0 items-center gap-1.5">
           <a
             href={`tel:${PHONE_NUMBER}`}
             className={cn(
-              "hidden items-center gap-1.5 text-sm transition-colors lg:flex",
-              isTransparent ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground"
+              "hidden items-center gap-1.5 px-2 text-sm transition-colors lg:flex",
+              isHero ? "text-white/75 hover:text-white" : "text-muted-foreground hover:text-foreground"
             )}
           >
             <Phone className="size-3.5" />
             {PHONE_DISPLAY}
           </a>
-          <LanguageSwitcher />
-          <Button asChild size="sm" className={cn(
-            "hidden sm:inline-flex rounded-full px-5",
-            isTransparent && "border-white/60 bg-white/15 text-white backdrop-blur-sm hover:bg-white/25"
-          )}>
-            <a href={TREATWELL_URL} target="_blank" rel="noopener noreferrer">
+          <LanguageSwitcher
+            variant={isHero ? "hero" : "default"}
+            className="hidden md:inline-flex"
+          />
+          <BookingDialog>
+            <Button
+              size="sm"
+              className={cn(
+                "hidden rounded-full px-4 shadow-sm sm:inline-flex",
+                isHero &&
+                  "border border-white/30 bg-white/15 text-white backdrop-blur-sm hover:bg-white/25"
+              )}
+            >
               {t("bookNow")}
-            </a>
-          </Button>
+            </Button>
+          </BookingDialog>
 
           {/* Mobile Menu Toggle */}
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className={cn(
+              "size-9 rounded-full md:hidden",
+              isHero && "text-white hover:bg-white/15 hover:text-white"
+            )}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -115,42 +134,44 @@ export const SiteHeader = () => {
         </div>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav — separate glass card below the pill */}
       {mobileOpen && (
-        <nav className="border-t border-border/50 bg-card px-4 py-4 md:hidden">
-          <div className="flex flex-col gap-2">
+        <nav className="absolute inset-x-3 top-full z-50 mt-2 rounded-2xl border border-border/40 bg-background/95 p-3 shadow-[0_12px_36px_-12px_oklch(0.22_0.005_60/0.35)] backdrop-blur-xl md:hidden">
+          <div className="flex flex-col gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted",
+                  "rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
                   pathname === item.href
-                    ? "text-primary"
-                    : "text-muted-foreground"
+                    ? "bg-primary/12 text-primary"
+                    : "text-muted-foreground hover:bg-foreground/4 hover:text-foreground"
                 )}
               >
                 {t(item.key)}
               </Link>
             ))}
-            <div className="mt-2 flex flex-col gap-2">
+            <div className="mt-2 flex flex-col gap-2 border-t border-border/40 pt-3">
               <a
                 href={`tel:${PHONE_NUMBER}`}
-                className="flex items-center gap-1.5 px-3 py-2 text-sm text-muted-foreground"
+                className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-foreground/4 hover:text-foreground"
               >
                 <Phone className="size-3.5" />
                 {PHONE_DISPLAY}
               </a>
-              <Button asChild size="sm">
-                <a
-                  href={TREATWELL_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <div className="flex items-center justify-between rounded-xl px-3 py-1.5">
+                <span className="text-sm font-medium text-muted-foreground">
+                  {t("language")}
+                </span>
+                <LanguageSwitcher onSelect={() => setMobileOpen(false)} />
+              </div>
+              <BookingDialog>
+                <Button size="sm" className="rounded-full" onClick={() => setMobileOpen(false)}>
                   {t("bookNow")}
-                </a>
-              </Button>
+                </Button>
+              </BookingDialog>
             </div>
           </div>
         </nav>

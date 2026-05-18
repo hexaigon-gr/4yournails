@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "postinstall": "prisma generate --schema=lib/db/schema.prisma"
+    "lint": "eslint"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.999.0",

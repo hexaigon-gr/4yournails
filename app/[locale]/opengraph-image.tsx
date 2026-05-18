@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "4 Your Nails — Award-winning nail salon in Ilioupoli, Athens";
+export const alt = "4 Your Nails | Award-winning nail salon in Ilioupoli, Athens";
 
 const OgImage = async () => {
   return new ImageResponse(
@@ -16,7 +16,7 @@ const OgImage = async () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #FAF7F4 0%, #F5EDE8 50%, #EDE0D8 100%)",
+          background: "linear-gradient(135deg, #FBF8F2 0%, #F3EDDF 50%, #E8DDC3 100%)",
           fontFamily: "sans-serif",
         }}
       >
@@ -28,7 +28,7 @@ const OgImage = async () => {
             left: 0,
             right: 0,
             height: 6,
-            background: "linear-gradient(90deg, #DBA49A, #c99389, #DBA49A)",
+            background: "linear-gradient(90deg, #E87722, #7A8920, #E87722)",
           }}
         />
 
@@ -47,7 +47,7 @@ const OgImage = async () => {
             style={{
               fontSize: 72,
               fontWeight: 800,
-              color: "#3D2C29",
+              color: "#1F1A18",
               lineHeight: 1.1,
               marginBottom: 16,
             }}
@@ -59,7 +59,7 @@ const OgImage = async () => {
             style={{
               fontSize: 28,
               fontWeight: 600,
-              color: "#DBA49A",
+              color: "#E87722",
               letterSpacing: "0.05em",
               marginBottom: 32,
             }}
@@ -90,7 +90,7 @@ const OgImage = async () => {
                       width: 8,
                       height: 8,
                       borderRadius: "50%",
-                      backgroundColor: "#DBA49A",
+                      backgroundColor: "#E87722",
                     }}
                   />
                   <span
@@ -116,7 +116,7 @@ const OgImage = async () => {
               color: "#8B7B74",
             }}
           >
-            <span>4.8/5 on Treatwell</span>
+            <span>4.8/5 Rated</span>
             <span>|</span>
             <span>Award-Winning</span>
             <span>|</span>

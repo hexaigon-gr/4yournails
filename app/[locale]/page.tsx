@@ -1,5 +1,4 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import Image from "next/image";
 import { BasePageProps } from "@/types/page-props";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -8,9 +7,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "@/lib/i18n/navigation";
 import GoogleReviews from "@/components/GoogleReviews";
 import { GalleryGrid } from "@/components/gallery-grid";
-import { ReviewsCarousel } from "@/components/reviews-carousel";
+import { ReviewsCarousel, CarouselReview } from "@/components/reviews-carousel";
+import { getGoogleReviews } from "@/server_actions/get-google-reviews";
+import { SITE_URL } from "@/lib/general/site";
 import { AnimatedMap } from "@/components/animated-map";
 import { ContactForm } from "@/components/contact-form";
+import { HeroVideo } from "@/components/hero-video";
+import { BookingDialog } from "@/components/booking-dialog";
 import {
   Star,
   Award,
@@ -26,13 +29,14 @@ import {
   ArrowRight,
   Clock,
   MapPin,
-  Instagram,
-  ExternalLink,
+  Heart,
+  Crown,
+  Bus,
+  TrainFront,
 } from "lucide-react";
 
 const GOOGLE_PLACE_ID = process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID ?? "";
 
-const TREATWELL_URL = "https://www.treatwell.gr/katasthma/4-your-nails/";
 const PHONE_NUMBER = "+302109918915";
 const PHONE_DISPLAY = "210 991 8915";
 
@@ -51,14 +55,25 @@ const Home = async ({ params }: BasePageProps) => {
 
   const t = await getTranslations("HomePage");
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://4yournails.vercel.app";
+  const googleReviewsData = await getGoogleReviews(GOOGLE_PLACE_ID);
+
+  const liveReviews: CarouselReview[] = (googleReviewsData?.reviews ?? [])
+    .filter((r) => r.text && r.text.trim().length > 0)
+    .slice(0, 6)
+    .map((r) => ({
+      authorName: r.author_name,
+      rating: r.rating,
+      text: r.text,
+      time: r.relative_time_description,
+      source: "google",
+    }));
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NailSalon",
     name: "4 Your Nails",
-    image: `${siteUrl}/images/logo-transparent.png`,
-    url: siteUrl,
+    image: `${SITE_URL}/images/logo-transparent.png`,
+    url: SITE_URL,
     telephone: "+302109918915",
     address: {
       "@type": "PostalAddress",
@@ -82,7 +97,7 @@ const Home = async ({ params }: BasePageProps) => {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.8",
-      reviewCount: "298",
+      reviewCount: "312",
       bestRating: "5",
     },
     priceRange: "€€",
@@ -91,6 +106,12 @@ const Home = async ({ params }: BasePageProps) => {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hero.jpg"
+        fetchPriority="high"
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -99,13 +120,13 @@ const Home = async ({ params }: BasePageProps) => {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="-mt-16 relative flex min-h-screen items-center justify-center overflow-hidden">
-          <Image
-            src="/images/salon/salon-hero-new.jpg"
-            alt="Beautiful manicured nails — 4 Your Nails"
-            fill
-            className="object-cover"
-            priority
+        <section className="relative flex h-dvh items-center justify-center overflow-hidden">
+          <HeroVideo
+            poster="/images/hero.jpg"
+            sources={[
+              { src: "/images/videos/hero-video.mp4", type: "video/mp4" },
+            ]}
+            alt="Beautiful manicured nails by 4 Your Nails"
           />
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-3xl px-4 text-center">
@@ -115,24 +136,13 @@ const Home = async ({ params }: BasePageProps) => {
             <p className="mx-auto mt-6 max-w-lg text-lg text-white/80">
               {t("hero.subtitle")}
             </p>
-            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button asChild size="lg" className="rounded-full border-0 bg-[#DBA49A] px-8 text-white hover:bg-[#c99389]">
-                <a
-                  href={TREATWELL_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+            <div className="mt-8 flex items-center justify-center">
+              <BookingDialog>
+                <Button size="lg" className="rounded-full border-0 bg-primary px-8 text-primary-foreground hover:bg-primary-hover">
                   <Calendar className="size-4" />
                   {t("hero.bookNow")}
-                </a>
-              </Button>
-              <a
-                href={`tel:${PHONE_NUMBER}`}
-                className="flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
-              >
-                <Phone className="size-4" />
-                {t("hero.callUs")}: {PHONE_DISPLAY}
-              </a>
+                </Button>
+              </BookingDialog>
             </div>
           </div>
         </section>
@@ -166,7 +176,7 @@ const Home = async ({ params }: BasePageProps) => {
         </section>
 
         {/* Services Preview */}
-        <section className="bg-[#FAF7F4] py-16 lg:py-20">
+        <section className="bg-cream py-16 lg:py-20">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -185,7 +195,7 @@ const Home = async ({ params }: BasePageProps) => {
                     className="group border-0 bg-white shadow-sm transition-all hover:shadow-md"
                   >
                     <CardContent className="flex flex-col items-center p-8 text-center">
-                      <div className="flex size-14 items-center justify-center rounded-full bg-[#DBA49A]/15 text-[#DBA49A] transition-colors group-hover:bg-[#DBA49A]/25">
+                      <div className="flex size-14 items-center justify-center rounded-full bg-primary/15 text-primary transition-colors group-hover:bg-primary/25">
                         <Icon className="size-6" />
                       </div>
                       <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
@@ -200,7 +210,7 @@ const Home = async ({ params }: BasePageProps) => {
               })}
             </div>
             <div className="mt-8 text-center">
-              <Button asChild className="rounded-full border-0 bg-[#DBA49A] px-8 text-white hover:bg-[#c99389]">
+              <Button asChild className="rounded-full border-0 bg-primary px-8 text-primary-foreground hover:bg-primary-hover">
                 <Link href="/services">
                   {t("services.viewAll")}
                   <ArrowRight className="size-4" />
@@ -236,7 +246,7 @@ const Home = async ({ params }: BasePageProps) => {
               />
             </div>
             <div className="mt-8 text-center">
-              <Button asChild className="rounded-full border-0 bg-[#DBA49A] px-8 text-white hover:bg-[#c99389]">
+              <Button asChild className="rounded-full border-0 bg-primary px-8 text-primary-foreground hover:bg-primary-hover">
                 <Link href="/gallery">
                   {t("gallery.seeMore")}
                   <ArrowRight className="size-4" />
@@ -247,7 +257,7 @@ const Home = async ({ params }: BasePageProps) => {
         </section>
 
         {/* Reviews */}
-        <section className="bg-[#FAF7F4] py-16 lg:py-20">
+        <section className="bg-cream py-16 lg:py-20">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -258,7 +268,7 @@ const Home = async ({ params }: BasePageProps) => {
               </p>
             </div>
             <div className="mt-10">
-              <ReviewsCarousel />
+              <ReviewsCarousel reviews={liveReviews} />
             </div>
             <div className="mt-8 flex justify-center">
               <GoogleReviews placeId={GOOGLE_PLACE_ID} />
@@ -266,8 +276,44 @@ const Home = async ({ params }: BasePageProps) => {
           </div>
         </section>
 
+        {/* Highlights — Τι μας αρέσει */}
+        <section className="bg-white py-16 lg:py-20">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+                {t("highlights.eyebrow")}
+              </p>
+              <h2 className="mt-3 font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                {t("highlights.title")}
+              </h2>
+            </div>
+            <div className="mx-auto mt-10 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                { key: "environment", Icon: Heart },
+                { key: "specialties", Icon: Crown },
+                { key: "team", Icon: Users },
+              ].map(({ key, Icon }) => (
+                <div
+                  key={key}
+                  className="group relative overflow-hidden rounded-2xl border border-border/50 bg-cream p-6 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  <div className="flex size-12 items-center justify-center rounded-full bg-primary/15 text-primary transition-colors group-hover:bg-primary/25">
+                    <Icon className="size-5" />
+                  </div>
+                  <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+                    {t(`highlights.${key}.title`)}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {t(`highlights.${key}.text`)}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Contact Section */}
-        <section id="contact" className="scroll-mt-20 bg-[#FAF7F4] py-16 lg:py-20">
+        <section id="contact" className="scroll-mt-20 bg-cream py-16 lg:py-20">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -280,19 +326,35 @@ const Home = async ({ params }: BasePageProps) => {
             <div className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2">
               {/* Left — Info Cards + Map */}
               <div className="flex flex-col gap-4">
-                {/* Address */}
+                {/* Address + Transit */}
                 <div className="rounded-xl border border-border/50 bg-white p-5">
                   <div className="flex items-start gap-4">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#DBA49A]/10">
-                      <MapPin className="size-5 text-[#DBA49A]" />
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <MapPin className="size-5 text-primary" />
                     </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-[#DBA49A]">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-primary">
                         {t("contact.address")}
                       </p>
                       <p className="mt-1 text-sm font-medium text-foreground">
                         Λεωφ. Σοφοκλή Βενιζέλου 93, Ηλιούπολη 163 46
                       </p>
+
+                      <div className="mt-4 border-t border-border/50 pt-4">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+                          {t("transit.title")}
+                        </p>
+                        <ul className="mt-2 space-y-2">
+                          <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                            <Bus className="mt-0.5 size-4 shrink-0 text-primary" />
+                            <span>{t("transit.bus")}</span>
+                          </li>
+                          <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                            <TrainFront className="mt-0.5 size-4 shrink-0 text-primary" />
+                            <span>{t("transit.metro")}</span>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -300,16 +362,16 @@ const Home = async ({ params }: BasePageProps) => {
                 {/* Phone */}
                 <div className="rounded-xl border border-border/50 bg-white p-5">
                   <div className="flex items-start gap-4">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#DBA49A]/10">
-                      <Phone className="size-5 text-[#DBA49A]" />
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <Phone className="size-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-[#DBA49A]">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-primary">
                         {t("contact.phone")}
                       </p>
                       <a
                         href={`tel:${PHONE_NUMBER}`}
-                        className="mt-1 inline-block text-sm font-medium text-foreground transition-colors hover:text-[#DBA49A]"
+                        className="mt-1 inline-block text-sm font-medium text-foreground transition-colors hover:text-primary"
                       >
                         {PHONE_DISPLAY}
                       </a>
@@ -320,26 +382,26 @@ const Home = async ({ params }: BasePageProps) => {
                 {/* Hours */}
                 <div className="rounded-xl border border-border/50 bg-white p-5">
                   <div className="flex items-start gap-4">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#DBA49A]/10">
-                      <Clock className="size-5 text-[#DBA49A]" />
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <Clock className="size-5 text-primary" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-[#DBA49A]">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-primary">
                         {t("contact.hours")}
                       </p>
                       <div className="mt-2 space-y-1.5">
                         {[
                           { day: "monday", hours: null },
-                          { day: "tuesday", hours: "09:00 – 20:00" },
-                          { day: "wednesday", hours: "09:00 – 20:00" },
-                          { day: "thursday", hours: "09:00 – 20:00" },
-                          { day: "friday", hours: "09:00 – 20:00" },
-                          { day: "saturday", hours: "09:00 – 17:00" },
+                          { day: "tuesday", hours: "09:00 - 20:00" },
+                          { day: "wednesday", hours: "09:00 - 20:00" },
+                          { day: "thursday", hours: "09:00 - 20:00" },
+                          { day: "friday", hours: "09:00 - 20:00" },
+                          { day: "saturday", hours: "09:00 - 17:00" },
                           { day: "sunday", hours: null },
                         ].map((item) => (
                           <div key={item.day} className="flex justify-between text-sm">
                             <span className="font-medium text-foreground">{t(`hours.${item.day}`)}</span>
-                            <span className={item.hours ? "text-muted-foreground" : "text-[#DBA49A]"}>
+                            <span className={item.hours ? "text-muted-foreground" : "text-primary"}>
                               {item.hours ?? t("contact.closed")}
                             </span>
                           </div>
@@ -359,44 +421,16 @@ const Home = async ({ params }: BasePageProps) => {
               <div className="flex flex-col gap-4">
                 <ContactForm />
 
-                {/* Instagram */}
-                <div className="rounded-xl border border-border/50 bg-white p-5">
-                  <div className="flex items-center gap-4">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#DBA49A]/10">
-                      <Instagram className="size-5 text-[#DBA49A]" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-[#DBA49A]">
-                        {t("contact.followUs")}
-                      </p>
-                      <a
-                        href="https://www.instagram.com/4yournails_/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-1 inline-flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-[#DBA49A]"
-                      >
-                        @4yournails_
-                        <ExternalLink className="size-3" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Book on Treatwell CTA */}
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full rounded-xl border-0 bg-[#DBA49A] text-base font-semibold text-white hover:bg-[#c99389]"
-                >
-                  <a
-                    href={TREATWELL_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {/* Booking CTA */}
+                <BookingDialog>
+                  <Button
+                    size="lg"
+                    className="w-full rounded-xl border-0 bg-primary text-base font-semibold text-primary-foreground hover:bg-primary-hover"
                   >
                     <Calendar className="size-4" />
                     {t("cta.bookNow")}
-                  </a>
-                </Button>
+                  </Button>
+                </BookingDialog>
               </div>
             </div>
           </div>

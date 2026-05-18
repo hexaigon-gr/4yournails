@@ -19,7 +19,11 @@ export const Providers = ({ children, messages, locale }: Props) => {
         forcedTheme="light"
         disableTransitionOnChange
       >
-        <NextIntlClientProvider messages={messages} locale={locale}>
+        <NextIntlClientProvider
+          messages={messages}
+          locale={locale}
+          timeZone="Europe/Athens"
+        >
           {children}
           <Toaster />
         </NextIntlClientProvider>

@@ -5,24 +5,24 @@
     "gallery": "Gallery",
     "about": "About",
     "contact": "Contact",
-    "bookNow": "Book Now"
+    "bookNow": "Book Now",
+    "language": "Language"
   },
   "HomePage": {
     "hero": {
       "title": "Your Nails, Our Passion",
-      "subtitle": "Award-winning nail salon in Ilioupoli. Expert manicures, pedicures, gel extensions & nail art — trusted by hundreds of happy clients.",
-      "bookNow": "Book Your Appointment",
-      "callUs": "Or call us"
+      "subtitle": "Award-winning nail salon in Ilioupoli. Expert manicures, pedicures, gel extensions & nail art, trusted by hundreds of happy clients.",
+      "bookNow": "Book Appointment"
     },
     "trust": {
-      "rating": "4.8★ on Treatwell",
-      "reviews": "298+ Reviews",
+      "rating": "4.8★ Rated",
+      "reviews": "312+ Reviews",
       "award": "Award-Winning",
       "experience": "Est. since 2018"
     },
     "services": {
       "title": "Our Services",
-      "subtitle": "From classic manicures to stunning nail art — we have everything you need.",
+      "subtitle": "From classic manicures to stunning nail art. We have everything you need.",
       "viewAll": "View All Services",
       "from": "From",
       "manicure": {
@@ -52,7 +52,7 @@
     },
     "gallery": {
       "title": "Our Work",
-      "subtitle": "Real results from our salon — see what we can do for you.",
+      "subtitle": "Real results from our salon. See what we can do for you.",
       "seeMore": "See More in Gallery"
     },
     "reviews": {
@@ -60,7 +60,7 @@
       "subtitle": "Trusted by hundreds of happy clients in Ilioupoli.",
       "readMore": "Read More on Google",
       "onGoogle": "on Google",
-      "onTreatwell": "on Treatwell",
+      "onTreatwell": "Online",
       "review1": {
         "name": "Maria Pischos",
         "text": "Very clean, very professional and great prices. Nice selection of colors and on time!",
@@ -86,7 +86,7 @@
         "time": "7 months ago"
       },
       "review5": {
-        "name": "Treatwell Client",
+        "name": "Verified Client",
         "text": "Thank you so much! The manicure, which in my case is difficult, was perfect.",
         "source": "treatwell",
         "time": "2 weeks ago"
@@ -100,8 +100,29 @@
     },
     "cta": {
       "title": "Ready for your next appointment?",
-      "subtitle": "Book online in seconds — choose your service, pick a time, done.",
-      "bookNow": "Book on Treatwell"
+      "subtitle": "Book online in seconds: choose your service, pick a time, done.",
+      "bookNow": "Book Appointment"
+    },
+    "highlights": {
+      "eyebrow": "What we love",
+      "title": "A little diamond in the heart of Ilioupoli",
+      "environment": {
+        "title": "Atmosphere",
+        "text": "Warm and relaxing. A refined space to unwind and feel refreshed."
+      },
+      "specialties": {
+        "title": "Specialised in",
+        "text": "Manicures, pedicures, eyelash extensions and waxing."
+      },
+      "team": {
+        "title": "Our team",
+        "text": "We take the time each client needs, so you leave happy and renewed."
+      }
+    },
+    "transit": {
+      "title": "Getting here",
+      "bus": "Right by the bus stops on Plateia Ethnikis Antistaseos.",
+      "metro": "A 15-minute walk from \"Ilioupoli / Grigoris Lambrakis\" metro station."
     },
     "hours": {
       "title": "Visit Us",
@@ -139,50 +160,27 @@
   },
   "ServicesPage": {
     "title": "Our Services",
-    "subtitle": "Professional nail care & beauty treatments at competitive prices.",
+    "subtitle": "Professional nail care, manicures, pedicures and waxing in Ilioupoli. Book online in seconds.",
     "book": "Book",
-    "duration": "min",
-    "nails": {
-      "title": "Nails",
-      "semiPermanentManicure": {
-        "title": "Semi-Permanent Manicure",
-        "description": "Long-lasting gel polish with shaping and cuticle care."
-      },
-      "handCareManicure": {
-        "title": "Hand Care Manicure",
-        "description": "Classic manicure with hand care, shaping and polish."
-      },
-      "semiPermanentPedicure": {
-        "title": "Semi-Permanent Pedicure",
-        "description": "Gel polish pedicure with full foot care treatment."
-      },
-      "pedicureMaintenance": {
-        "title": "Pedicure Maintenance",
-        "description": "Quick pedicure refresh to keep your feet looking great."
-      },
-      "gelExtensions": {
-        "title": "Gel Nail Extensions",
-        "description": "Beautiful, natural-looking nail extensions with gel."
-      },
-      "nailArt": {
-        "title": "Nail Art",
-        "description": "Custom designs, patterns, and creative decorations."
-      }
-    },
-    "beauty": {
-      "title": "Beauty",
-      "eyebrowShaping": {
-        "title": "Eyebrow Shaping",
-        "description": "Threading and shaping for perfectly defined brows."
-      },
-      "fullLegWaxing": {
-        "title": "Full Leg Waxing",
-        "description": "Smooth, long-lasting hair removal for full legs."
-      },
-      "eyelashExtensions": {
-        "title": "Eyelash Extensions",
-        "description": "Natural or dramatic lash extensions for beautiful eyes."
-      }
+    "treatmentsCount": "{count} treatments",
+    "jumpTo": "Jump to:",
+    "ctaTitle": "Ready to book?",
+    "ctaSubtitle": "Pick a service and a time in seconds.",
+    "ctaButton": "Book Appointment",
+    "dialog": {
+      "title": "Book your appointment",
+      "subtitleGeneric": "Choose your preferred way to reach us.",
+      "service": "Service",
+      "preferred": "Preferred way to reach us",
+      "call": "Call us",
+      "callSubtitle": "Speak with us directly",
+      "whatsapp": "WhatsApp",
+      "whatsappSubtitle": "Message us right now",
+      "whatsappMessage": "Hi, I'd like to book an appointment for: {service}.",
+      "whatsappMessageGeneric": "Hi, I'd like to book an appointment.",
+      "or": "or",
+      "treatwell": "Book Online",
+      "treatwellSubtitle": "Online in seconds"
     }
   },
   "GalleryPage": {
@@ -204,7 +202,7 @@
     },
     "team": {
       "title": "Our Team",
-      "subtitle": "Meet the talented professionals behind your perfect nails."
+      "subtitle": "Meet the talented professionals behind your perfect nails. Our team takes the time each client needs, so you leave our space happy and renewed."
     },
     "award": {
       "title": "Award-Winning Quality",
@@ -219,7 +217,7 @@
     "hours": "Hours",
     "closed": "Closed",
     "bookOnline": "Book Online",
-    "bookOnTreatwell": "Book on Treatwell",
+    "bookOnTreatwell": "Book Online",
     "followUs": "Follow Us",
     "findUs": "Find Us"
   },

@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Globe } from "lucide-react";
+import { cn } from "@/lib/general/utils";
 
 const languages = [
   {
@@ -24,19 +25,42 @@ const languages = [
   },
 ] as const;
 
-export const LanguageSwitcher = () => {
+type LanguageSwitcherProps = {
+  variant?: "default" | "hero";
+  className?: string;
+  onSelect?: () => void;
+};
+
+export const LanguageSwitcher = ({
+  variant = "default",
+  className,
+  onSelect,
+}: LanguageSwitcherProps) => {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
 
   const handleLanguageChange = (languageCode: string) => {
+    onSelect?.();
     router.replace(pathname, { locale: languageCode });
   };
+
+  const isHero = variant === "hero";
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="size-9">
+        <Button
+          variant="ghost"
+          size="icon"
+          className={cn(
+            "size-9 rounded-full",
+            isHero
+              ? "text-white/85 hover:bg-white/15 hover:text-white"
+              : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground",
+            className,
+          )}
+        >
           <Globe className="size-4" />
           <span className="sr-only">Switch language</span>
         </Button>
@@ -46,7 +70,7 @@ export const LanguageSwitcher = () => {
           <DropdownMenuItem
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
-            className="gap-2 cursor-pointer"
+            className="cursor-pointer gap-2"
             disabled={language.code === locale}
           >
             <span className="text-lg">{language.flag}</span>

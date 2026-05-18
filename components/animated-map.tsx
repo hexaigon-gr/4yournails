@@ -57,7 +57,7 @@ export function AnimatedMap() {
           }}
         >
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#DBA49A]/5 via-transparent to-[#DBA49A]/5" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5" />
 
           {/* Map grid + buildings */}
           <div className="absolute inset-0 pointer-events-none">
@@ -130,7 +130,7 @@ export function AnimatedMap() {
             >
               <MapPin
                 size={32}
-                className="text-[#DBA49A] drop-shadow-lg"
+                className="text-primary drop-shadow-lg"
                 style={{ filter: "drop-shadow(0 0 10px oklch(0.7 0.12 30 / 0.5))" }}
               />
             </motion.div>
@@ -148,7 +148,7 @@ export function AnimatedMap() {
                 animate={{ scale: isHovered ? 1.05 : 1 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-[#DBA49A] animate-pulse" />
+                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 <span className="text-[10px] font-medium text-muted-foreground tracking-wide uppercase">Live</span>
               </motion.div>
             </div>
@@ -165,14 +165,14 @@ export function AnimatedMap() {
 
               {/* Animated underline */}
               <motion.div
-                className="h-px bg-gradient-to-r from-[#DBA49A]/50 via-[#DBA49A]/30 to-transparent"
+                className="h-px bg-gradient-to-r from-primary/50 via-primary/30 to-transparent"
                 initial={{ scaleX: 0.3, originX: 0 }}
                 animate={{ scaleX: isHovered ? 1 : 0.3 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               />
 
               {/* Google Maps link */}
-              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#DBA49A]">
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary">
                 <ExternalLink size={12} />
                 Google Maps
               </span>

@@ -2,9 +2,9 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/lib/i18n/navigation";
 import { Instagram, Facebook, Phone, MapPin, Hexagon } from "lucide-react";
+import { BookingDialog } from "@/components/booking-dialog";
 import { SocialIcon } from "@/components/social-icon";
 
-const TREATWELL_URL = "https://www.treatwell.gr/katasthma/4-your-nails/";
 const INSTAGRAM_URL = "https://www.instagram.com/4yournails_/";
 const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=100063698404274";
 const PHONE_NUMBER = "+302109918915";
@@ -80,14 +80,14 @@ export const SiteFooter = async () => {
                   {tNav(item.key)}
                 </Link>
               ))}
-              <a
-                href={TREATWELL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
-              >
-                {t("bookNow")}
-              </a>
+              <BookingDialog>
+                <button
+                  type="button"
+                  className="cursor-pointer text-left text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                >
+                  {t("bookNow")}
+                </button>
+              </BookingDialog>
             </nav>
           </div>
 
