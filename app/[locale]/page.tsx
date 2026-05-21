@@ -12,7 +12,7 @@ import { getGoogleReviews } from "@/server_actions/get-google-reviews";
 import { SITE_URL } from "@/lib/general/site";
 import { AnimatedMap } from "@/components/animated-map";
 import { ContactForm } from "@/components/contact-form";
-import { HeroVideo } from "@/components/hero-video";
+import { HeroSection } from "@/components/hero-section";
 import { BookingDialog } from "@/components/booking-dialog";
 import {
   Star,
@@ -119,32 +119,15 @@ const Home = async ({ params }: BasePageProps) => {
       <SiteHeader />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative flex h-dvh items-center justify-center overflow-hidden">
-          <HeroVideo
-            poster="/images/hero.jpg"
-            sources={[
-              { src: "/images/videos/hero-video.mp4", type: "video/mp4" },
-            ]}
-            alt="Beautiful manicured nails by 4 Your Nails"
-          />
-          <div className="relative z-10 mx-auto max-w-3xl px-4 text-center">
-            <h1 className="font-serif text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-7xl">
-              {t("hero.title")}
-            </h1>
-            <p className="mx-auto mt-6 max-w-lg text-lg text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-              {t("hero.subtitle")}
-            </p>
-            <div className="mt-8 flex items-center justify-center">
-              <BookingDialog>
-                <Button size="lg" className="rounded-full border-0 bg-primary px-8 text-primary-foreground hover:bg-primary-hover">
-                  <Calendar className="size-4" />
-                  {t("hero.bookNow")}
-                </Button>
-              </BookingDialog>
-            </div>
-          </div>
-        </section>
+        <HeroSection
+          poster="/images/hero.jpg"
+          videoSrc="/images/videos/hero-video.mp4"
+          videoType="video/mp4"
+          videoAlt="Beautiful manicured nails by 4 Your Nails"
+          title={t("hero.title")}
+          subtitle={t("hero.subtitle")}
+          bookNowLabel={t("hero.bookNow")}
+        />
 
         {/* Trust Bar */}
         <section className="bg-white py-8">

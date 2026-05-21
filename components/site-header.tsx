@@ -39,7 +39,9 @@ export const SiteHeader = () => {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:pt-4">
+    <header
+      className="fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:pt-4"
+    >
       <div
         className={cn(
           "flex w-full max-w-5xl items-center justify-between gap-3 rounded-full border px-3 py-2 transition-all duration-300 sm:px-4",
@@ -49,22 +51,14 @@ export const SiteHeader = () => {
         )}
       >
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-2 pl-1">
+        <Link href="/" className="flex shrink-0 items-center pl-1">
           <Image
             src="/images/logo-transparent.png"
             alt="4 Your Nails"
-            width={48}
-            height={48}
-            className="h-9 w-auto"
+            width={96}
+            height={96}
+            className="h-14 w-auto sm:h-16"
           />
-          <span
-            className={cn(
-              "hidden font-serif text-base font-semibold tracking-tight sm:inline",
-              isHero ? "text-white" : "text-foreground"
-            )}
-          >
-            4 Your Nails
-          </span>
         </Link>
 
         {/* Desktop Nav — centered */}

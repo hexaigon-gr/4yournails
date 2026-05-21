@@ -6,9 +6,10 @@ type HeroVideoProps = {
   poster: string;
   sources: { src: string; type: string }[];
   alt: string;
+  onEnded?: () => void;
 };
 
-export const HeroVideo = ({ poster, sources, alt }: HeroVideoProps) => {
+export const HeroVideo = ({ poster, sources, alt, onEnded }: HeroVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -23,12 +24,12 @@ export const HeroVideo = ({ poster, sources, alt }: HeroVideoProps) => {
       ref={videoRef}
       autoPlay
       muted
-      loop
       playsInline
       preload="none"
       poster={poster}
       aria-label={alt}
-      className="absolute inset-0 h-full w-full object-cover object-left sm:object-center"
+      onEnded={onEnded}
+      className="absolute inset-0 h-full w-full object-cover object-left sm:object-[35%_center]"
     >
       {sources.map((source) => (
         <source key={source.src} src={source.src} type={source.type} />
