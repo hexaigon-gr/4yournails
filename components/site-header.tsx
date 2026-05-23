@@ -44,14 +44,20 @@ export const SiteHeader = () => {
     >
       <div
         className={cn(
-          "flex w-full max-w-5xl items-center justify-between gap-3 rounded-full border px-3 py-2 transition-all duration-300 sm:px-4",
+          "flex w-full max-w-5xl items-center justify-between gap-3 py-2 transition-all duration-300 md:rounded-full md:border md:px-4",
           isHero
-            ? "border-white/15 bg-white/5 backdrop-blur-md supports-backdrop-filter:bg-white/6"
-            : "border-border/40 bg-background/55 backdrop-blur-xl shadow-[0_8px_28px_-12px_oklch(0.22_0.005_60/0.18)] supports-backdrop-filter:bg-background/40"
+            ? "md:border-white/15 md:bg-white/5 md:backdrop-blur-md md:supports-backdrop-filter:bg-white/6"
+            : "md:border-border/40 md:bg-background/55 md:backdrop-blur-xl md:shadow-[0_8px_28px_-12px_oklch(0.22_0.005_60/0.18)] md:supports-backdrop-filter:bg-background/40"
         )}
       >
-        {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center pl-1">
+        {/* Logo — hidden on mobile when on the hero (the hero image already shows it) */}
+        <Link
+          href="/"
+          className={cn(
+            "shrink-0 items-center pl-1",
+            isHero ? "hidden md:flex" : "flex"
+          )}
+        >
           <Image
             src="/images/logo-transparent.png"
             alt="4 Your Nails"
@@ -84,7 +90,7 @@ export const SiteHeader = () => {
         </nav>
 
         {/* Right Side */}
-        <div className="flex shrink-0 items-center gap-1.5">
+        <div className="ml-auto flex shrink-0 items-center gap-1.5">
           <a
             href={`tel:${PHONE_NUMBER}`}
             className={cn(
@@ -112,14 +118,11 @@ export const SiteHeader = () => {
             </Button>
           </BookingDialog>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle — always dark; the mobile hero has a light/cream top area */}
           <Button
             variant="ghost"
             size="icon"
-            className={cn(
-              "size-9 rounded-full md:hidden",
-              isHero && "text-white hover:bg-white/15 hover:text-white"
-            )}
+            className="size-9 rounded-full text-foreground hover:bg-foreground/5 md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
