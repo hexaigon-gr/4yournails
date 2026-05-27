@@ -29,7 +29,7 @@ export const HeroVideo = ({ poster, sources, alt, onEnded }: HeroVideoProps) => 
       poster={poster}
       aria-label={alt}
       onEnded={onEnded}
-      className="absolute inset-0 h-full w-full object-cover object-left sm:object-[35%_center]"
+      className="absolute inset-0 h-full w-full object-cover object-left brightness-90 sm:object-[35%_center]"
     >
       {sources.map((source) => (
         <source key={source.src} src={source.src} type={source.type} />

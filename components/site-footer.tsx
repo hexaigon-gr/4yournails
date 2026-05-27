@@ -142,13 +142,13 @@ export const SiteFooter = async () => {
           <p>
             &copy; {new Date().getFullYear()} 4 Your Nails. {t("rights")}
           </p>
-          <p className="mt-2 flex items-center justify-center gap-1.5">
-            {t("madeBy")}{" "}
+          <p className="mt-2 flex items-center justify-center gap-1.5 leading-none">
+            <span>{t("madeBy")}</span>
             <a
               href="https://www.hexaigon.gr"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-background/70 underline underline-offset-4 transition-colors hover:text-background"
+              className="inline-flex items-center gap-1 text-background/70 transition-colors hover:text-background"
             >
               <Hexagon className="size-3.5 text-primary" />
               hexaigon.gr

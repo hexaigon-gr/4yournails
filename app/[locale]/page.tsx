@@ -1,9 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { BasePageProps } from "@/types/page-props";
-import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "@/lib/i18n/navigation";
 import GoogleReviews from "@/components/GoogleReviews";
 import { GalleryGrid } from "@/components/gallery-grid";
@@ -116,8 +114,6 @@ const Home = async ({ params }: BasePageProps) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <SiteHeader />
-
       <main className="flex-1">
         <HeroSection
           poster="/images/hero.jpg"
@@ -172,22 +168,34 @@ const Home = async ({ params }: BasePageProps) => {
               {services.map((service) => {
                 const Icon = service.icon;
                 return (
-                  <Card
+                  <Link
                     key={service.key}
-                    className="group border-0 bg-white shadow-sm transition-all hover:shadow-md"
+                    href="/services"
+                    className="group relative overflow-hidden rounded-3xl border border-border/40 bg-white p-7 shadow-[0_4px_24px_-12px_oklch(0.22_0.005_60/0.12)] transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-[0_24px_48px_-16px_oklch(0.685_0.175_48/0.28)] sm:p-8"
                   >
-                    <CardContent className="flex flex-col items-center p-8 text-center">
-                      <div className="flex size-14 items-center justify-center rounded-full bg-primary/15 text-primary transition-colors group-hover:bg-primary/25">
-                        <Icon className="size-6" />
+                    {/* Decorative gradient blob in the top-right corner */}
+                    <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-gradient-to-br from-primary/14 via-primary/8 to-transparent blur-2xl transition-all duration-700 group-hover:scale-150 group-hover:from-primary/22" />
+
+                    <div className="relative">
+                      <div className="inline-flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/22 to-primary/8 text-primary ring-1 ring-inset ring-primary/15 transition-all duration-500 group-hover:rotate-6 group-hover:from-primary/30 group-hover:ring-primary/30">
+                        <Icon className="size-6" strokeWidth={1.75} />
                       </div>
-                      <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+
+                      <h3 className="mt-5 font-serif text-xl font-semibold tracking-tight text-foreground">
                         {t(`services.${service.key}.title`)}
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                         {t(`services.${service.key}.description`)}
                       </p>
-                    </CardContent>
-                  </Card>
+
+                      <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                        <span className="opacity-70 transition-opacity duration-300 group-hover:opacity-100">
+                          {t("services.viewAll")}
+                        </span>
+                        <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                      </div>
+                    </div>
+                  </Link>
                 );
               })}
             </div>

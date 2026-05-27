@@ -1,7 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { BasePageProps } from "@/types/page-props";
-import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Instagram } from "lucide-react";
 import { MasonryGallery } from "@/components/masonry-gallery";
@@ -97,8 +96,6 @@ const GalleryPage = async ({ params }: BasePageProps) => {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <SiteHeader />
-
       <main className="flex-1">
         {/* Hero */}
         <section className="bg-background py-16 lg:py-20">

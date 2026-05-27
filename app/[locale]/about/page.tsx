@@ -1,7 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import { BasePageProps } from "@/types/page-props";
-import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, User } from "lucide-react";
@@ -34,8 +33,6 @@ const AboutPage = async ({ params }: BasePageProps) => {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <SiteHeader />
-
       <main className="flex-1">
         {/* Page Header */}
         <section className="bg-background py-16 lg:py-20">

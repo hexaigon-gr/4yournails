@@ -4,7 +4,6 @@ import { Calendar, Clock, Footprints, Hand, Sparkles } from "lucide-react";
 
 import { BookingDialog } from "@/components/booking-dialog";
 import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 import {
   formatDuration,
@@ -40,11 +39,9 @@ const ServicesPage = async ({ params }: BasePageProps) => {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <SiteHeader />
-
       <main className="flex-1">
         {/* Page header + category jump nav */}
-        <section className="bg-cream pb-10 pt-28 lg:pt-32">
+        <section className="bg-cream py-16 lg:py-20">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center">
               <h1 className="font-serif text-4xl font-bold tracking-tight text-foreground sm:text-5xl">

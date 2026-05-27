@@ -78,8 +78,8 @@ export const HeroSection = ({
 
   return (
     <>
-      {/* Mobile hero — static image with logo + title in the cream area, big BOOK NOW at the bottom */}
-      <section className="relative h-dvh overflow-hidden md:hidden">
+      {/* Mobile hero — static image with logo + title inside a compact cream arch, big BOOK NOW at the bottom */}
+      <section className="relative h-[calc(100dvh-3.5rem)] overflow-hidden md:hidden">
         <Image
           src="/images/HERO-MOBILE.jpg"
           alt={videoAlt}
@@ -88,35 +88,43 @@ export const HeroSection = ({
           sizes="100vw"
           className="object-cover"
         />
+
+        {/* Cream arch — compact: fits logo + title only */}
         <motion.div
           variants={containerVariants}
           initial={prefersReducedMotion ? "visible" : "hidden"}
           animate="visible"
-          className="relative z-10 flex h-full flex-col items-center px-6 pb-8 pt-4"
+          className="absolute inset-x-0 top-0 z-10 flex flex-col items-center bg-cream px-6 pt-3 pb-6"
+          style={{ borderRadius: "0 0 50% 50% / 0 0 12% 12%" }}
         >
-          {/* Cream top area: logo + title */}
           <motion.div variants={itemVariants}>
             <Image
-              src="/images/logo-transparent.png"
+              src="/images/logo-hd.png"
               alt="4 Your Nails"
-              width={400}
-              height={400}
+              width={1200}
+              height={899}
               priority
-              className="h-56 w-auto"
+              quality={95}
+              sizes="(max-width: 768px) 220px, 260px"
+              className="h-40 w-auto select-none"
             />
           </motion.div>
           <motion.h1
             variants={itemVariants}
-            className="mt-1 text-center font-serif text-[2.4rem] font-bold leading-tight tracking-tight text-foreground"
+            className="mt-0.5 text-center font-serif text-3xl font-bold leading-tight tracking-tight text-foreground"
           >
             {title}
           </motion.h1>
+        </motion.div>
 
-          {/* Spacer — pushes the BOOK NOW button to the bottom */}
-          <div className="flex-1" />
-
-          {/* Bottom CTA */}
-          <motion.div variants={itemVariants} className="w-full">
+        {/* Bottom CTA */}
+        <motion.div
+          variants={containerVariants}
+          initial={prefersReducedMotion ? "visible" : "hidden"}
+          animate="visible"
+          className="absolute inset-x-6 bottom-8 z-10"
+        >
+          <motion.div variants={itemVariants}>
             <BookingDialog>
               <Button
                 size="lg"
@@ -138,8 +146,6 @@ export const HeroSection = ({
           alt={videoAlt}
           onEnded={handleEnded}
         />
-        {/* Dark scrim at top so header text stays readable over bright video */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-36 bg-linear-to-b from-black/55 to-transparent" />
         <motion.div
           variants={containerVariants}
           initial={prefersReducedMotion ? "visible" : "hidden"}
