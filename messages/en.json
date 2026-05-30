@@ -11,14 +11,13 @@
   "HomePage": {
     "hero": {
       "title": "Your Nails, Our Passion",
-      "subtitle": "Award-winning nail salon in Ilioupoli. Expert manicures, pedicures, gel extensions & nail art, trusted by hundreds of happy clients.",
+      "subtitle": "Nail salon in Ilioupoli. Expert manicures, pedicures, gel extensions & nail art, trusted by hundreds of happy clients.",
       "bookNow": "Book Appointment"
     },
     "trust": {
       "rating": "4.8★ Rated",
       "reviews": "312+ Reviews",
-      "award": "Award-Winning",
-      "experience": "Est. since 2018"
+      "experience": "Est. since 2015"
     },
     "services": {
       "title": "Our Services",
@@ -52,7 +51,7 @@
     },
     "gallery": {
       "title": "Our Work",
-      "subtitle": "Real results from our salon. See what we can do for you.",
+      "subtitle": "A few of our favourite designs.",
       "seeMore": "See More in Gallery"
     },
     "reviews": {
@@ -112,7 +111,7 @@
       },
       "specialties": {
         "title": "Specialised in",
-        "text": "Manicures, pedicures, eyelash extensions and waxing."
+        "text": "Manicures, pedicures, nail enhancements, threading & wax hair removal, semi-permanent polish and eyebrow microblading."
       },
       "team": {
         "title": "Our team",
@@ -185,7 +184,7 @@
   },
   "GalleryPage": {
     "title": "Our Work",
-    "subtitle": "See what we can do for your nails.",
+    "subtitle": "A few of our favourite designs.",
     "all": "All",
     "manicure": "Manicure",
     "pedicure": "Pedicure",
@@ -197,16 +196,12 @@
     "title": "About 4 Your Nails",
     "story": {
       "title": "Our Story",
-      "text": "Located in the heart of Ilioupoli, 4 Your Nails has been providing exceptional nail care and beauty services since 2018. We're proud to have been recognized with the Golden Company Award for our commitment to quality and customer satisfaction.",
+      "text": "Located in the heart of Ilioupoli, 4 Your Nails has been providing exceptional nail care and beauty services since 2015, with a commitment to quality and customer satisfaction.",
       "text2": "Our team of skilled professionals is passionate about making every client feel pampered and beautiful. From classic manicures to creative nail art, we bring precision, care, and creativity to every service."
     },
     "team": {
       "title": "Our Team",
-      "subtitle": "Meet the talented professionals behind your perfect nails. Our team takes the time each client needs, so you leave our space happy and renewed."
-    },
-    "award": {
-      "title": "Award-Winning Quality",
-      "text": "We're honored to have received the Golden Company Award, recognizing our dedication to excellence in nail care and beauty services."
+      "subtitle": "Meet the talented professionals behind your perfect nails and eyebrows. Our team takes the time each client needs, so you leave our space happy and renewed."
     }
   },
   "ContactPage": {
@@ -222,7 +217,7 @@
     "findUs": "Find Us"
   },
   "Footer": {
-    "description": "Award-winning nail salon in Ilioupoli, Athens.",
+    "description": "Nail salon in Ilioupoli, Athens.",
     "quickLinks": "Quick Links",
     "contact": "Contact",
     "hours": "Hours",

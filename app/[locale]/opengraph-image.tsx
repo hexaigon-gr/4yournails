@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "4 Your Nails | Award-winning nail salon in Ilioupoli, Athens";
+export const alt = "4 Your Nails | Nail salon in Ilioupoli, Athens";
 
 const OgImage = async () => {
   return new ImageResponse(
@@ -117,8 +117,6 @@ const OgImage = async () => {
             }}
           >
             <span>4.8/5 Rated</span>
-            <span>|</span>
-            <span>Award-Winning</span>
             <span>|</span>
             <span>Ilioupoli, Athens</span>
           </div>

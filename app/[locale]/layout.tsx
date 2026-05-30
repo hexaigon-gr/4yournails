@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { setRequestLocale, getMessages } from "next-intl/server";
-import { Manrope, EB_Garamond } from "next/font/google";
+import { Manrope, Comfortaa } from "next/font/google";
 import { routing } from "@/lib/i18n/routing";
 import { Providers } from "@/components/providers";
 import { PublicShell } from "@/components/public-shell";
@@ -17,10 +17,10 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const ebGaramond = EB_Garamond({
-  variable: "--font-eb-garamond",
+const comfortaa = Comfortaa({
+  variable: "--font-comfortaa",
   subsets: ["latin", "greek"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | 4 Your Nails",
   },
   description:
-    "Award-winning nail salon in Ilioupoli, Athens. Expert manicures, pedicures, gel extensions & nail art. Book your appointment online in seconds.",
+    "Nail salon in Ilioupoli, Athens. Expert manicures, pedicures, gel extensions & nail art. Book your appointment online in seconds.",
   keywords: [
     "nail salon",
     "manicure",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "4 Your Nails",
     locale: "el_GR",
     alternateLocale: "en_US",
-    title: "4 Your Nails | Award-Winning Nail Salon in Ilioupoli",
+    title: "4 Your Nails | Nail Salon in Ilioupoli",
     description:
       "Expert manicures, pedicures, gel extensions & nail art. Trusted by hundreds of happy clients. Book online.",
     url: SITE_URL,
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "4 Your Nails | Nail Salon in Ilioupoli, Athens",
     description:
-      "Award-winning nail salon. Expert manicures, pedicures, gel extensions & nail art. Book your appointment today.",
+      "Expert manicures, pedicures, gel extensions & nail art. Book your appointment today.",
   },
   robots: {
     index: true,
@@ -90,7 +90,7 @@ const LocaleLayout = async ({ children, params }: BaseLayoutProps) => {
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${manrope.variable} ${ebGaramond.variable} font-sans antialiased`}
+        className={`${manrope.variable} ${comfortaa.variable} font-sans antialiased`}
       >
         <Providers messages={messages} locale={locale}>
           <PublicShell>{children}</PublicShell>

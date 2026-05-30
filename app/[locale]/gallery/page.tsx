@@ -14,7 +14,7 @@ export const generateMetadata = async ({
   return {
     title: `${t("title")} | 4 Your Nails`,
     description:
-      "Browse our nail art gallery: manicures, pedicures, gel extensions and creative nail designs from our award-winning salon in Ilioupoli.",
+      "Browse our nail art gallery: manicures, pedicures, gel extensions and creative nail designs from our salon in Ilioupoli.",
   };
 };
 

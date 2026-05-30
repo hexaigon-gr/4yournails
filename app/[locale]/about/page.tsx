@@ -3,13 +3,12 @@ import Image from "next/image";
 import { BasePageProps } from "@/types/page-props";
 import { SiteFooter } from "@/components/site-footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Award, User } from "lucide-react";
+import { User } from "lucide-react";
 import type { Metadata } from "next";
 
 const teamMembers = [
   { name: "Ελένη", nameEn: "Elena", role: "Nail & Beauty Specialist" },
   { name: "Ελεονώρα", nameEn: "Eleonora", role: "Nail Technician" },
-  { name: "Ντεναντα", nameEn: "Ndenanda", role: "Nail Artist" },
   { name: "Άντζυ", nameEn: "Antzy", role: "Nail Technician" },
 ] as const;
 
@@ -68,29 +67,6 @@ const AboutPage = async ({ params }: BasePageProps) => {
                   className="object-cover"
                 />
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Award Section */}
-        <section className="bg-background py-16 lg:py-20">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-3xl">
-              <Card className="border-primary/20 bg-primary/5">
-                <CardContent className="flex flex-col items-start gap-6 p-8 sm:flex-row sm:items-center">
-                  <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                    <Award className="size-8 text-primary" />
-                  </div>
-                  <div>
-                    <h2 className="font-serif text-2xl font-bold tracking-tight text-foreground">
-                      {t("award.title")}
-                    </h2>
-                    <p className="mt-2 text-base leading-relaxed text-muted-foreground">
-                      {t("award.text")}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </section>

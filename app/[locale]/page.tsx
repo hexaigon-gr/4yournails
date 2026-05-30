@@ -14,7 +14,6 @@ import { HeroSection } from "@/components/hero-section";
 import { BookingDialog } from "@/components/booking-dialog";
 import {
   Star,
-  Award,
   Users,
   Calendar,
   Hand,
@@ -138,10 +137,6 @@ const Home = async ({ params }: BasePageProps) => {
                 <span className="text-sm font-medium text-foreground/80">
                   {t("trust.reviews")}
                 </span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Award className="size-5 text-primary" />
-                <span className="text-sm font-medium text-foreground/80">{t("trust.award")}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Calendar className="size-5 text-primary" />
