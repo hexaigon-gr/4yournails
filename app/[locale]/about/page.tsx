@@ -58,6 +58,9 @@ const AboutPage = async ({ params }: BasePageProps) => {
                 <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                   {t("story.text2")}
                 </p>
+                <p className="mt-6 font-serif text-lg italic text-foreground">
+                  {t("story.tagline")}
+                </p>
               </div>
               <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
                 <Image

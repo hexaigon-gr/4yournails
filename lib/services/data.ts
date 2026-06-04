@@ -17,8 +17,8 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   {
     key: "manicureHand",
     title: {
-      el: "Μανικιούρ & Θεραπείες Χεριών",
-      en: "Manicure & Hand Treatments",
+      el: "Μανικιούρ Και Θεραπείες Χεριών",
+      en: "Manicure And Hand Treatments",
     },
     items: [
       { name: { el: "Μανικιούρ ημιμόνιμο", en: "Semi-permanent manicure" }, durationMinutes: 60 },
@@ -46,8 +46,8 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   {
     key: "pedicureFoot",
     title: {
-      el: "Πεντικιούρ & Θεραπείες Ποδιών",
-      en: "Pedicure & Foot Treatments",
+      el: "Πεντικιούρ Και Θεραπείες Ποδιών",
+      en: "Pedicure And Foot Treatments",
     },
     items: [
       { name: { el: "Πεντικιούρ ημιμόνιμο", en: "Semi-permanent pedicure" }, durationMinutes: 60 },
@@ -66,8 +66,8 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   {
     key: "waxing",
     title: {
-      el: "Αποτρίχωση με Κερί & Κλωστή",
-      en: "Waxing & Threading",
+      el: "Αποτρίχωση Με Κερί Και Κλωστή",
+      en: "Waxing And Threading",
     },
     items: [
       { name: { el: "Αποτρίχωση άνω χείλος", en: "Upper lip" }, durationMinutes: 15 },

@@ -24,30 +24,7 @@
       "subtitle": "From classic manicures to stunning nail art. We have everything you need.",
       "viewAll": "View All Services",
       "from": "From",
-      "manicure": {
-        "title": "Manicure",
-        "description": "Classic hand care with shaping, cuticle care & polish"
-      },
-      "pedicure": {
-        "title": "Pedicure",
-        "description": "Complete foot care for soft, beautiful feet"
-      },
-      "gelExtensions": {
-        "title": "Gel Extensions",
-        "description": "Natural-looking nail extensions with lasting shine"
-      },
-      "semiPermanent": {
-        "title": "Semi-Permanent",
-        "description": "Long-lasting gel polish that stays flawless for weeks"
-      },
-      "nailArt": {
-        "title": "Nail Art",
-        "description": "Custom designs, patterns & creative nail decoration"
-      },
-      "eyebrowsWaxing": {
-        "title": "Eyebrows & Waxing",
-        "description": "Threading, shaping & waxing for a polished look"
-      }
+      "treatmentsCount": "{count} treatments"
     },
     "gallery": {
       "title": "Our Work",
@@ -195,9 +172,10 @@
   "AboutPage": {
     "title": "About 4 Your Nails",
     "story": {
-      "title": "Our Story",
-      "text": "Located in the heart of Ilioupoli, 4 Your Nails has been providing exceptional nail care and beauty services since 2015, with a commitment to quality and customer satisfaction.",
-      "text2": "Our team of skilled professionals is passionate about making every client feel pampered and beautiful. From classic manicures to creative nail art, we bring precision, care, and creativity to every service."
+      "title": "For Your Nails – 11 years of beauty and care",
+      "text": "Since 2015, For Your Nails has been a trusted name in nail and brow care. For 11 years, we have offered high-quality services with professionalism, consistency, and a love for detail.",
+      "text2": "With a focus on highlighting every woman's natural beauty, we offer manicure, pedicure, nail extensions, eyebrow threading, microblading, and permanent eyebrow makeup. In a warm and welcoming space, quality, trust, and personal care are always at the heart of the experience we provide.",
+      "tagline": "✨ For Your Nails – because beauty is in the details."
     },
     "team": {
       "title": "Our Team",

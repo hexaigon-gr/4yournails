@@ -4,7 +4,6 @@ import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/i18n/navigation";
 import GoogleReviews from "@/components/GoogleReviews";
-import { GalleryGrid } from "@/components/gallery-grid";
 import { ReviewsCarousel, CarouselReview } from "@/components/reviews-carousel";
 import { getGoogleReviews } from "@/server_actions/get-google-reviews";
 import { SITE_URL } from "@/lib/general/site";
@@ -12,6 +11,11 @@ import { AnimatedMap } from "@/components/animated-map";
 import { ContactForm } from "@/components/contact-form";
 import { HeroSection } from "@/components/hero-section";
 import { BookingDialog } from "@/components/booking-dialog";
+import { PinterestGrid } from "@/components/pinterest-grid";
+import { InstagramFeed } from "@/components/instagram-embed";
+import { getWorkImages } from "@/lib/work-images";
+import { INSTAGRAM_POSTS } from "@/lib/instagram-posts";
+import { SERVICE_CATEGORIES, type ServiceCategoryKey } from "@/lib/services/data";
 import {
   Star,
   Users,
@@ -19,9 +23,6 @@ import {
   Hand,
   Footprints,
   Sparkles,
-  Paintbrush,
-  Scissors,
-  Eye,
   Phone,
   ArrowRight,
   Clock,
@@ -37,22 +38,23 @@ const GOOGLE_PLACE_ID = process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID ?? "";
 const PHONE_NUMBER = "+302109918915";
 const PHONE_DISPLAY = "210 991 8915";
 
-const services = [
-  { key: "manicure", icon: Hand },
-  { key: "pedicure", icon: Footprints },
-  { key: "gelExtensions", icon: Sparkles },
-  { key: "semiPermanent", icon: Paintbrush },
-  { key: "nailArt", icon: Scissors },
-  { key: "eyebrowsWaxing", icon: Eye },
-] as const;
+const SERVICE_ICONS: Record<ServiceCategoryKey, typeof Hand> = {
+  manicureHand: Hand,
+  pedicureFoot: Footprints,
+  waxing: Sparkles,
+};
 
 const Home = async ({ params }: BasePageProps) => {
-  const { locale } = await params;
-  setRequestLocale(locale);
+  const { locale: rawLocale } = await params;
+  setRequestLocale(rawLocale);
+  const locale = rawLocale === "en" ? "en" : "el";
 
   const t = await getTranslations("HomePage");
 
-  const googleReviewsData = await getGoogleReviews(GOOGLE_PLACE_ID);
+  const [googleReviewsData, workImages] = await Promise.all([
+    getGoogleReviews(GOOGLE_PLACE_ID),
+    getWorkImages(),
+  ]);
 
   const liveReviews: CarouselReview[] = (googleReviewsData?.reviews ?? [])
     .filter((r) => r.text && r.text.trim().length > 0)
@@ -160,27 +162,27 @@ const Home = async ({ params }: BasePageProps) => {
               </p>
             </div>
             <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((service) => {
-                const Icon = service.icon;
+              {SERVICE_CATEGORIES.map((cat) => {
+                const Icon = SERVICE_ICONS[cat.key];
                 return (
                   <Link
-                    key={service.key}
-                    href="/services"
+                    key={cat.key}
+                    href={`/services#${cat.key}`}
                     className="group relative overflow-hidden rounded-3xl border border-border/40 bg-white p-7 shadow-[0_4px_24px_-12px_oklch(0.22_0.005_60/0.12)] transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-[0_24px_48px_-16px_oklch(0.685_0.175_48/0.28)] sm:p-8"
                   >
                     {/* Decorative gradient blob in the top-right corner */}
-                    <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-gradient-to-br from-primary/14 via-primary/8 to-transparent blur-2xl transition-all duration-700 group-hover:scale-150 group-hover:from-primary/22" />
+                    <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-linear-to-br from-primary/14 via-primary/8 to-transparent blur-2xl transition-all duration-700 group-hover:scale-150 group-hover:from-primary/22" />
 
                     <div className="relative">
-                      <div className="inline-flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/22 to-primary/8 text-primary ring-1 ring-inset ring-primary/15 transition-all duration-500 group-hover:rotate-6 group-hover:from-primary/30 group-hover:ring-primary/30">
+                      <div className="inline-flex size-14 items-center justify-center rounded-2xl bg-linear-to-br from-primary/22 to-primary/8 text-primary ring-1 ring-inset ring-primary/15 transition-all duration-500 group-hover:rotate-6 group-hover:from-primary/30 group-hover:ring-primary/30">
                         <Icon className="size-6" strokeWidth={1.75} />
                       </div>
 
                       <h3 className="mt-5 font-serif text-xl font-semibold tracking-tight text-foreground">
-                        {t(`services.${service.key}.title`)}
+                        {cat.title[locale]}
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                        {t(`services.${service.key}.description`)}
+                        {t("services.treatmentsCount", { count: cat.items.length })}
                       </p>
 
                       <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
@@ -205,7 +207,7 @@ const Home = async ({ params }: BasePageProps) => {
           </div>
         </section>
 
-        {/* Gallery Preview */}
+        {/* Gallery Preview — Pinterest masonry of our work */}
         <section className="bg-white py-16 lg:py-20">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center">
@@ -216,22 +218,19 @@ const Home = async ({ params }: BasePageProps) => {
                 {t("gallery.subtitle")}
               </p>
             </div>
-            <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-              <GalleryGrid
-                images={[
-                  { src: "/images/gallery/gallery-1.jpg", alt: "Chrome iridescent manicure" },
-                  { src: "/images/gallery/gallery-6.jpg", alt: "French tip nail extensions" },
-                  { src: "/images/gallery/gallery-4.jpg", alt: "Purple gel manicure" },
-                  { src: "/images/gallery/gallery-7.jpg", alt: "Colorful rainbow nail art" },
-                  { src: "/images/gallery/gallery-8.jpg", alt: "French almond gel extensions" },
-                  { src: "/images/gallery/gallery-5.jpg", alt: "Classic red manicure" },
-                  { src: "/images/gallery/gallery-9.jpg", alt: "Subtle iridescent french tips" },
-                  { src: "/images/gallery/gallery-2.jpg", alt: "4 Your Nails salon storefront" },
-                ]}
-              />
+            <div className="mt-10">
+              <PinterestGrid images={workImages} />
             </div>
-            <div className="mt-8 text-center">
-              <Button asChild className="rounded-full border-0 bg-primary px-8 text-primary-foreground hover:bg-primary-hover">
+
+            <div className="mx-auto mt-16 max-w-xl">
+              <InstagramFeed urls={INSTAGRAM_POSTS} />
+            </div>
+
+            <div className="mt-12 text-center">
+              <Button
+                asChild
+                className="rounded-full border-0 bg-primary px-8 text-primary-foreground hover:bg-primary-hover"
+              >
                 <Link href="/gallery">
                   {t("gallery.seeMore")}
                   <ArrowRight className="size-4" />

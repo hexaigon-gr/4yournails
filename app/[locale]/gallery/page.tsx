@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { BasePageProps } from "@/types/page-props";
 import { SiteFooter } from "@/components/site-footer";
 import { Instagram } from "lucide-react";
-import { MasonryGallery } from "@/components/masonry-gallery";
+import { PinterestGrid } from "@/components/pinterest-grid";
+import { getWorkImages } from "@/lib/work-images";
 
 export const generateMetadata = async ({
   params,
@@ -18,81 +19,12 @@ export const generateMetadata = async ({
   };
 };
 
-export interface GalleryItem {
-  src: string;
-  alt: string;
-  category: "manicure" | "nailArt" | "gelExtensions" | "salon";
-  aspect: "tall" | "square" | "wide";
-}
-
-export const galleryItems: GalleryItem[] = [
-  {
-    src: "/images/gallery/gallery-1.jpg",
-    alt: "Chrome iridescent manicure",
-    category: "manicure",
-    aspect: "tall",
-  },
-  {
-    src: "/images/gallery/gallery-3.jpg",
-    alt: "Salon interior with staff working",
-    category: "salon",
-    aspect: "wide",
-  },
-  {
-    src: "/images/gallery/gallery-6.jpg",
-    alt: "French tip nail extensions",
-    category: "gelExtensions",
-    aspect: "tall",
-  },
-  {
-    src: "/images/gallery/gallery-4.jpg",
-    alt: "Purple gel manicure",
-    category: "manicure",
-    aspect: "square",
-  },
-  {
-    src: "/images/gallery/gallery-7.jpg",
-    alt: "Colorful rainbow ombre nail art",
-    category: "nailArt",
-    aspect: "tall",
-  },
-  {
-    src: "/images/gallery/gallery-2.jpg",
-    alt: "4 Your Nails salon storefront",
-    category: "salon",
-    aspect: "tall",
-  },
-  {
-    src: "/images/gallery/gallery-5.jpg",
-    alt: "Classic red manicure with 4 Your Nails branding",
-    category: "manicure",
-    aspect: "tall",
-  },
-  {
-    src: "/images/gallery/gallery-8.jpg",
-    alt: "French almond gel extensions",
-    category: "gelExtensions",
-    aspect: "tall",
-  },
-  {
-    src: "/images/gallery/gallery-10.jpg",
-    alt: "4 Your Nails team photo",
-    category: "salon",
-    aspect: "tall",
-  },
-  {
-    src: "/images/gallery/gallery-9.jpg",
-    alt: "Subtle iridescent french tips",
-    category: "manicure",
-    aspect: "square",
-  },
-];
-
 const GalleryPage = async ({ params }: BasePageProps) => {
   const { locale } = await params;
   setRequestLocale(locale);
 
   const t = await getTranslations("GalleryPage");
+  const workImages = await getWorkImages();
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -111,16 +43,10 @@ const GalleryPage = async ({ params }: BasePageProps) => {
           </div>
         </section>
 
-        {/* Pinterest-style Gallery */}
+        {/* Pinterest masonry of our work */}
         <section className="py-12 lg:py-16">
           <div className="container mx-auto px-4">
-            <MasonryGallery
-              images={galleryItems.map(({ src, alt, aspect }) => ({
-                src,
-                alt,
-                aspect,
-              }))}
-            />
+            <PinterestGrid images={workImages} />
 
             {/* Instagram CTA */}
             <div className="mx-auto mt-12 flex max-w-lg flex-col items-center gap-3 rounded-2xl border border-border/50 bg-muted/60 px-6 py-8 text-center">
