@@ -10,7 +10,7 @@
   },
   "HomePage": {
     "hero": {
-      "title": "Your Nails, Our Passion",
+      "title": "Your Nails\nOur Passion",
       "subtitle": "Nail salon in Ilioupoli. Expert manicures, pedicures, gel extensions & nail art, trusted by hundreds of happy clients.",
       "bookNow": "Book Appointment"
     },
@@ -174,7 +174,7 @@
     "story": {
       "title": "For Your Nails – 11 years of beauty and care",
       "text": "Since 2015, For Your Nails has been a trusted name in nail and brow care. For 11 years, we have offered high-quality services with professionalism, consistency, and a love for detail.",
-      "text2": "With a focus on highlighting every woman's natural beauty, we offer manicure, pedicure, nail extensions, eyebrow threading, microblading, and permanent eyebrow makeup. In a warm and welcoming space, quality, trust, and personal care are always at the heart of the experience we provide.",
+      "text2": "With a focus on highlighting every woman's natural beauty, we offer manicure, pedicure, nail extensions, eyebrow threading, microblading, and semi-permanent eyebrow makeup. In a warm and welcoming space, quality, trust, and personal care are always at the heart of the experience we provide.",
       "tagline": "✨ For Your Nails – because beauty is in the details."
     },
     "team": {
@@ -195,7 +195,7 @@
     "findUs": "Find Us"
   },
   "Footer": {
-    "description": "Nail salon in Ilioupoli, Athens.",
+    "description": "Nail & brow studio in Ilioupoli.",
     "quickLinks": "Quick Links",
     "contact": "Contact",
     "hours": "Hours",

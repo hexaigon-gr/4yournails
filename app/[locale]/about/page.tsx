@@ -62,12 +62,14 @@ const AboutPage = async ({ params }: BasePageProps) => {
                   {t("story.tagline")}
                 </p>
               </div>
-              <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
+              <div className="relative flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl bg-cream p-6">
                 <Image
-                  src="/images/salon/salon-2.jpg"
-                  alt="4 Your Nails storefront"
-                  fill
-                  className="object-cover"
+                  src="/images/logo-hd.png"
+                  alt="4 Your Nails"
+                  width={1200}
+                  height={899}
+                  quality={95}
+                  className="h-auto w-full max-w-md select-none object-contain"
                 />
               </div>
             </div>

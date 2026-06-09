@@ -111,7 +111,7 @@ export const HeroSection = ({
           </motion.div>
           <motion.h1
             variants={itemVariants}
-            className="mt-0.5 text-center font-serif text-3xl font-bold leading-tight tracking-tight text-foreground"
+            className="mt-0.5 whitespace-pre-line text-center font-serif text-3xl font-bold leading-tight tracking-tight text-foreground"
           >
             {title}
           </motion.h1>
@@ -157,7 +157,7 @@ export const HeroSection = ({
         >
           <motion.h1
             variants={itemVariants}
-            className="font-serif text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-7xl"
+            className="whitespace-pre-line font-serif text-4xl font-bold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-7xl"
           >
             {title}
           </motion.h1>
